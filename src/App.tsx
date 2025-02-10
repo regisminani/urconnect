@@ -4,6 +4,7 @@ import Resolved from "./components/pages/suggestions/Resolved";
 import Pending from "./components/pages/suggestions/Pending";
 import LayoutS from "./components/layouts/LayoutS";
 import Layout from "./components/layouts/Layout";
+import NotFound from "./components/pages/NotFound";
 function App() {
   return (
     <div className="font-inter">
@@ -22,6 +23,7 @@ function App() {
           {/* Groups */}
           <Route path="/groups" element={<Layout />}/>
 
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
