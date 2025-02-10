@@ -8,6 +8,7 @@ import LayoutHome from "./components/HomePage/LayoutHome";
 import Home from "./components/HomePage/Home"; // Make sure you import Home
 import About from "./components/HomePage/About"; // Make sure you import About
 import Suggestion from "./components/HomePage/Suggestion"; // Make sure you import Suggestion
+import LoginPage from "./components/Login/LoginPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="suggestion" element={<Suggestion />} />
+            <Route path="login" element={<LoginPage />} />
           </Route>
 
           {/* Routes for the suggestions layout */}
