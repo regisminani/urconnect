@@ -59,7 +59,7 @@ const LoginPage = () => {
           UR Connect
         </div>
         <div className="h-72 w-72">
-          <img src="/src/assets/ur.jpg" alt="Ur-logo" className="w-full h-full object-contain mt-8" />
+          <img src="/public/ur.jpg" alt="Ur-logo" className="w-full h-full object-contain mt-8" />
         </div>
       </div>
 
