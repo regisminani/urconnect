@@ -36,6 +36,11 @@ const Header = () => {
                 </div>
                 <div className="hover:bg-[#E0F2FE] cursor-pointer">
                   <p className="text-sm font-semibold pl-2 pr-3 text-nowrap">
+                    Notifications
+                  </p>
+                </div>
+                <div className="hover:bg-[#E0F2FE] cursor-pointer">
+                  <p className="text-sm font-semibold pl-2 pr-3 text-nowrap">
                     Logout
                   </p>
                 </div>
