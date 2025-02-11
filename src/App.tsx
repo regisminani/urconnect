@@ -12,6 +12,8 @@ import Suggestion from "./components/HomePage/Suggestion"; // Make sure you impo
 import LoginPage from './components/Login/LoginPage'; // Make sure you import LoginPage'
 import LoginPageAdmin from "./components/Login/LoginPageAdmin";
 
+import { ToastContainer } from "react-toastify";
+
 function App() {
   return (
     <div className="font-inter">
@@ -41,11 +43,10 @@ function App() {
           <Route path="/groups" element={<Layout />}/>
 
           <Route path="*" element={<NotFound />} />
-          {/* Messages and Groups routes */}
-          <Route path="/messages" element={<Layout />} />
-          <Route path="/groups" element={<Layout />} />
+          
         </Routes>
       </BrowserRouter>
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 }
