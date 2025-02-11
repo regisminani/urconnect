@@ -6,7 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 const LoginPage = () => {
   const [regNo, setRegNo] = useState("");
   const [pass, setPass] = useState("");
-  const [isVisible, setIsVisible] = useState(true); //  Tracking if the screen is visible
+  const [isVisible] = useState(true); //  Tracking if the screen is visible
 
   // Handle RegNo Change
   const handleRegChanges = (e: { target: { value: SetStateAction<string>; }; }) => {
