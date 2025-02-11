@@ -21,7 +21,7 @@ interface ApiResponse {
   status: string;
 }
 
-const LoginPageAdmin = () => {
+const RegisterPageAdmin = () => {
   const [formData, setFormData] = useState<FormData>({
     firstName: "",
     otherName: "",
@@ -241,4 +241,4 @@ const LoginPageAdmin = () => {
   );
 };
 
-export default LoginPageAdmin;
+export default RegisterPageAdmin;
