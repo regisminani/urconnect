@@ -1,13 +1,14 @@
 import { SetStateAction, useState } from "react";
-import { redirect } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { loginStudent, StudentLogin } from "../../api";
 
 const LoginPage = () => {
   const [regNo, setRegNo] = useState("");
   const [pass, setPass] = useState("");
-  const [isVisible] = useState(true); //  Tracking if the screen is visible
-
+ //  Tracking if the screen is visible
+  
   // Handle RegNo Change
   const handleRegChanges = (e: { target: { value: SetStateAction<string>; }; }) => {
     setRegNo(e.target.value);
@@ -33,12 +34,27 @@ const LoginPage = () => {
     return true;
   };
 
+  const formData:StudentLogin = {
+    regNo: regNo,
+    password: pass,
+  }
+  console.log(formData)
   // Handle Form Submission
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
 
     if (validateFields()) {
-      toast.success("Logged in Successfully!");
+      try {
+        const { data } = await loginStudent(formData);
+        localStorage.setItem("token", data.token);
+        toast.success("Logged in Successfully!");
+        navigate("/suggestions");
+        window.location.reload();
+      } catch (error: any) {
+        toast.error(
+          "Error: " + error.response?.data?.error || "Something went wrong"
+        );
+      }
     }
   };
 
@@ -47,11 +63,7 @@ const LoginPage = () => {
   //   setIsVisible(false);
   // };
 
-  // If isVisible is false, return nothing (hides the component)
-  if (!isVisible){
-   redirect('/')
-   
-  }
+ 
   return (
     <div className="ml-70 mt-14 w-[700px] h-[500px] flex rounded-10xl relative shadow-xl shadow-blue-500/30">
       <div className="w-1/2 flex flex-col items-center justify-center border-2" style={{ borderColor: "#006991", borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px" }}>
