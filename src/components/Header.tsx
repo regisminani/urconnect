@@ -1,9 +1,17 @@
 import { useState } from "react";
 import UserIcon from "./UserIcon";
 import Logo from "./Logo";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate()
   const [show, setShow] = useState(false);
+  const handleLogout = () => {
+    toast.success('Logged out Successfully!');
+    localStorage.removeItem("token");
+    navigate("/login"); 
+  };
   return (
     <div className="">
       <div className="hidden">
@@ -36,6 +44,11 @@ const Header = () => {
                 </div>
                 <div className="hover:bg-[#E0F2FE] cursor-pointer">
                   <p className="text-sm font-semibold pl-2 pr-3 text-nowrap">
+                    Notifications
+                  </p>
+                </div>
+                <div className="hover:bg-[#E0F2FE] cursor-pointer">
+                  <p onClick={handleLogout} className="text-sm font-semibold pl-2 pr-3 text-nowrap">
                     Logout
                   </p>
                 </div>
@@ -43,10 +56,12 @@ const Header = () => {
               <p className="text-[9px] pl-3 mt-5 text-neutral-400">
                 Trimester Credits: 4/5
               </p>
+
             </div>
           )}
         </div>
       </div>
+      
     </div>
   );
 };

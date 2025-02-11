@@ -1,9 +1,9 @@
-import Suggestion from "../../Suggestion";
+import SuggestionAlt from "../../SuggestionAlt";
 
 const Resolved = () => {
   return (
     <div className="space-y-5">
-      <Suggestion />
+      <SuggestionAlt />
     </div>
   );
 };
