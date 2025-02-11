@@ -9,7 +9,8 @@ import LayoutHome from "./components/HomePage/LayoutHome";
 import Home from "./components/HomePage/Home"; // Make sure you import Home
 import About from "./components/HomePage/About"; // Make sure you import About
 import Suggestion from "./components/HomePage/Suggestion"; // Make sure you import Suggestion
-import LoginPage from "./components/Login/LoginPage";
+import LoginPage from './components/Login/LoginPage'; // Make sure you import LoginPage'
+import LoginPageAdmin from "./components/Login/LoginPageAdmin";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="suggestion" element={<Suggestion />} />
             <Route path="login" element={<LoginPage />} />
+            <Route path="loginadmin" element={<LoginPageAdmin />} />
           </Route>
 
           {/* Routes for the suggestions layout */}
