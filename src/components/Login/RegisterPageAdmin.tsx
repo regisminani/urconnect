@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 // Define types for form data and response structure
 interface FormData {
@@ -233,6 +234,11 @@ const RegisterPageAdmin = () => {
         >
           {loading ? "Creating Account..." : "Register"}
         </button>
+        <Link to ="/loginadmin">
+          <a href="#" className="text-white ml-60 hover:underline mt-3">
+            login
+          </a>
+          </Link>
       </form>
 
       {/* Toast Container */}

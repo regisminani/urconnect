@@ -28,11 +28,9 @@ const Navbar: React.FC = () => {
           <Link to="/suggestion" className="block md:inline text-gray-600 text-md font-light hover:text-blue-700 transition-all duration-200">
             Suggestions
           </Link>
-          <Link to="/login" className="block md:inline text-gray-600 text-md font-light hover:text-blue-700 transition-all duration-200">
-            Login
-          </Link>
-          <Link to="/signup" className="block md:inline text-gray-600 text-md font-light hover:text-blue-600 hover:bg-blue-100 border rounded px-1  border-blue-900 transition-all duration-200">
-            Sign Up
+          
+          <Link to="/choice" className="block md:inline text-gray-600 text-md font-light hover:text-blue-600 hover:bg-blue-100 border rounded px-1  border-blue-900 transition-all duration-200">
+            Sign Up/Login
           </Link>
         </nav>
       </div>

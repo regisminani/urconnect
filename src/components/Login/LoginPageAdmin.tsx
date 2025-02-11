@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
+import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 const LoginPageAdmin = () => {
@@ -126,9 +127,11 @@ const LoginPageAdmin = () => {
           <a href="#" className="text-white hover:underline mt-3">
             Forgot Password?
           </a>
-          <a href="#" className="text-white hover:underline mt-3">
+          <Link to ="/registeradmin">
+          <a href="#" className="text-white  hover:underline mt-3">
             Sign up
           </a>
+          </Link>
         </div>
       </form>
 

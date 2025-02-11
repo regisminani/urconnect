@@ -14,6 +14,7 @@ import RegisterPageAdmin from "./components/Login/RegisterPageAdmin";
 import LoginPageAdmin from "./components/Login/LoginPageAdmin";
 
 import { ToastContainer } from "react-toastify";
+import ChoicePage from "./components/Login/ChoicePage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="login" element={<LoginPage />} />
             <Route path="registeradmin" element={<RegisterPageAdmin />} />
             <Route path="loginadmin" element={<LoginPageAdmin />} />
+            <Route path="choice" element={<ChoicePage />} />
           </Route>
 
           {/* Routes for the suggestions layout */}
