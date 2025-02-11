@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export interface Student {
-    regNo: string;
+  regNo: string;
   firstName: string;
   lastName: string;
   username: string;
