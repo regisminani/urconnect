@@ -111,10 +111,11 @@ const LoginPage = () => {
 
         {/* Links */}
         <div className="flex justify-between w-full text-sm mt-2">
-          <a href="#" className="text-white hover:underline mt-3">
+          <a href="/forgotPassword"  className="text-white hover:underline mt-3">
             Forgot Password?
+            
           </a>
-          <a href="#" className="text-white hover:underline mt-3">
+          <a href="/signup" className="text-white hover:underline mt-3">
             Sign up
           </a>
         </div>

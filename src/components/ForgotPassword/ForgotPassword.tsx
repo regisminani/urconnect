@@ -64,18 +64,18 @@ const ForgotPassword = () => {
 
 
   return (
-    <div className="h-[500px] w-[700px] ml-70 mt-14  flex shadow-2xl shadow-cyan-950" style={{borderTopLeftRadius:'10px',borderBottomLeftRadius:'10px',borderTopRightRadius:'10px',borderBottomRightRadius:'10px'}}>
+    <div className="h-[500px] w-[700px] ml-70 mt-14 mb-10  flex shadow-2xl shadow-cyan-950" style={{borderTopLeftRadius:'10px',borderBottomLeftRadius:'10px',borderTopRightRadius:'10px',borderBottomRightRadius:'10px'}}>
       <div className="w-1/2 " style={{borderColor: "#006991"}}>
           <div className="text-center font-serif justify-center flex-col text-5xl mt-9" style={{color:"#006991",}}>UR Connect</div>
 
             
         <div className="h-72 w-72 ">
-            <img src="/src/assets/ur.jpg" alt="Ur-logo" className="w-full h-full object-contain mt-15 ml-9" />
+            <img src="/public/ur.jpg" alt="Ur-logo" className="w-full h-full object-contain mt-15 ml-9" />
           </div>
       </div>
 
       <form action="" className="w-1/2 p-3 flex flex-col items-center" style={{backgroundColor:'#006991',borderTopRightRadius:'10px',borderBottomRightRadius:'10px'}}
-      onClick={handleSubmit} >
+      onSubmit={handleSubmit} >
 
       <div className="text-white text-5xl mt-6 font-serif">Student Page</div>
         <div className="text-white text-3xl mt-4 font-serif">Forgot Password</div>

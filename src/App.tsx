@@ -10,6 +10,7 @@ import About from "./components/HomePage/About"; // Make sure you import About
 import Suggestion from "./components/HomePage/Suggestion"; // Make sure you import Suggestion
 import LoginPage from "./components/Login/LoginPage";
 import SignUp from "./components/SignUp/SignUp";
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
             <Route path="suggestion" element={<Suggestion />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="signup" element={<SignUp />} />
+            <Route path="forgotPassword" element={<ForgotPassword />} />
+
           </Route>
 
           {/* Routes for the suggestions layout */}
