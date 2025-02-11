@@ -10,6 +10,7 @@ import Home from "./components/HomePage/Home"; // Make sure you import Home
 import About from "./components/HomePage/About"; // Make sure you import About
 import Suggestion from "./components/HomePage/Suggestion"; // Make sure you import Suggestion
 import LoginPage from "./components/Login/LoginPage";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -39,11 +40,10 @@ function App() {
           <Route path="/groups" element={<Layout />}/>
 
           <Route path="*" element={<NotFound />} />
-          {/* Messages and Groups routes */}
-          <Route path="/messages" element={<Layout />} />
-          <Route path="/groups" element={<Layout />} />
+          
         </Routes>
       </BrowserRouter>
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 }
