@@ -1,12 +1,13 @@
 import { SetStateAction, useState } from "react";
-import {  useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { loginStudent, StudentLogin } from "../../api";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const [regNo, setRegNo] = useState("");
   const [pass, setPass] = useState("");
+  const navigate= useNavigate()
  //  Tracking if the screen is visible
   
   // Handle RegNo Change
