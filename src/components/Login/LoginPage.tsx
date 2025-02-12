@@ -7,21 +7,29 @@ import { useNavigate } from "react-router-dom";
 const LoginPage = () => {
   const [regNo, setRegNo] = useState("");
   const [pass, setPass] = useState("");
-  const navigate= useNavigate()
- //  Tracking if the screen is visible
-  
+  const navigate = useNavigate();
+  //  Tracking if the screen is visible
+
   // Handle RegNo Change
-  const handleRegChanges = (e: { target: { value: SetStateAction<string>; }; }) => {
+  const handleRegChanges = (e: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setRegNo(e.target.value);
   };
 
   // Handle Password Change
-  const handlePassChanges = (e: { target: { value: SetStateAction<string>; }; }) => {
+  const handlePassChanges = (e: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setPass(e.target.value);
   };
 
   // Validate Inputs and Show Toasts
   const validateFields = () => {
+    if (regNo.length === 0 || pass.length === 0) {
+      toast.info("Please fill all the fields.");
+      return false;
+    }
     if (regNo.length !== 9) {
       toast.error("Reg No must be exactly 9 characters.");
       return false;
@@ -35,13 +43,13 @@ const LoginPage = () => {
     return true;
   };
 
-  const formData:StudentLogin = {
+  const formData: StudentLogin = {
     regNo: regNo,
     password: pass,
-  }
-  console.log(formData)
+  };
+  console.log(formData);
   // Handle Form Submission
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     if (validateFields()) {
@@ -64,20 +72,37 @@ const LoginPage = () => {
   //   setIsVisible(false);
   // };
 
- 
   return (
     <div className="ml-70 mt-14 w-[700px] h-[500px] flex rounded-10xl relative shadow-xl shadow-blue-500/30">
-      <div className="w-1/2 flex flex-col items-center justify-center border-2" style={{ borderColor: "#006991", borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px" }}>
-        <div style={{ color: "#006991" }} className="text-5xl mt-10 text-center font-serif">
+      <div
+        className="w-1/2 flex flex-col items-center justify-center border-2"
+        style={{
+          borderColor: "#006991",
+          borderTopLeftRadius: "10px",
+          borderBottomLeftRadius: "10px",
+        }}
+      >
+        <div
+          style={{ color: "#006991" }}
+          className="text-5xl mt-10 text-center font-serif"
+        >
           UR Connect
         </div>
         <div className="h-72 w-72">
-          <img src="/public/ur.jpg" alt="Ur-logo" className="w-full h-full object-contain mt-8" />
+          <img
+            src="/public/ur.jpg"
+            alt="Ur-logo"
+            className="w-full h-full object-contain mt-8"
+          />
         </div>
       </div>
 
       <form
-        style={{ backgroundColor: "#006991", borderTopRightRadius: "10px", borderBottomRightRadius: "10px" }}
+        style={{
+          backgroundColor: "#006991",
+          borderTopRightRadius: "10px",
+          borderBottomRightRadius: "10px",
+        }}
         className="w-1/2 relative p-6 flex flex-col items-center"
         onSubmit={handleSubmit}
       >
@@ -124,9 +149,8 @@ const LoginPage = () => {
 
         {/* Links */}
         <div className="flex justify-between w-full text-sm mt-2">
-          <a href="/forgotPassword"  className="text-white hover:underline mt-3">
+          <a href="/forgotPassword" className="text-white hover:underline mt-3">
             Forgot Password?
-            
           </a>
           <a href="/signup" className="text-white hover:underline mt-3">
             Sign up

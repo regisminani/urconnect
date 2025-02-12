@@ -26,7 +26,7 @@ const SignUp = () => {
 
   const validateFields = () => {
     if (!regNo || !pass || !newPass || !res) {
-      toast.error("The fields can't be empty.");
+      toast.info("Please fill all the fields.");
       return false;
     }
     if (regNo.length !== 9) {

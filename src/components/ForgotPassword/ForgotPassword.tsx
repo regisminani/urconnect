@@ -30,7 +30,7 @@ const ForgotPassword = () => {
     const validateFields= () => {
 
       if(regNo.length === 0 || pass.length === 0 || newPass.length === 0 || res.length === 0){
-        toast.info('Please fill all the fields')
+        toast.info('Please fill all the fields.')
         return false
       }
 
