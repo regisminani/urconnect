@@ -8,8 +8,6 @@ const LoginPage = () => {
   const navigate = useNavigate()
   const [regNo, setRegNo] = useState("");
   const [pass, setPass] = useState("");
-  const navigate = useNavigate();
-  //  Tracking if the screen is visible
 
   // Handle RegNo Change
   const handleRegChanges = (e: {
@@ -67,11 +65,6 @@ const LoginPage = () => {
       }
     }
   };
-
-  // Function to close the login screen
-  // const handleClose = () => {
-  //   setIsVisible(false);
-  // };
 
   return (
     <div className="ml-70 mt-16 w-[700px] h-[500px] flex rounded-10xl relative shadow-2xl shadow-cyan-950 mb-10 font-serif" style={{
