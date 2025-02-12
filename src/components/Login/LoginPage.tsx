@@ -73,11 +73,15 @@ const LoginPage = () => {
   // };
 
   return (
-    <div className="ml-70 mt-14 w-[700px] h-[500px] flex rounded-10xl relative shadow-xl shadow-blue-500/30">
+    <div className="ml-70 mt-16 w-[700px] h-[500px] flex rounded-10xl relative shadow-2xl shadow-cyan-950 mb-10 font-serif" style={{
+      borderTopLeftRadius: "10px",
+      borderBottomLeftRadius: "10px",
+      borderBottomRightRadius:"10px",
+      borderTopRightRadius:"10px"
+    }}>
       <div
-        className="w-1/2 flex flex-col items-center justify-center border-2"
+        className="w-1/2 flex flex-col items-center justify-center border-0"
         style={{
-          borderColor: "#006991",
           borderTopLeftRadius: "10px",
           borderBottomLeftRadius: "10px",
         }}
