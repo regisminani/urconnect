@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { loginStudent, StudentLogin } from "../../api";
 
 const LoginPage = () => {
+  const navigate = useNavigate()
   const [regNo, setRegNo] = useState("");
   const [pass, setPass] = useState("");
  //  Tracking if the screen is visible
