@@ -11,6 +11,7 @@ import About from "./components/HomePage/About"; // Make sure you import About
 import Suggestion from "./components/HomePage/Suggestion"; // Make sure you import Suggestion
 
 import SignUp from "./components/SignUp/SignUp";
+import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 
 import LoginPage from './components/Login/LoginPage'; // Make sure you import LoginPage'
 import RegisterPageAdmin from "./components/Login/RegisterPageAdmin";
@@ -33,6 +34,8 @@ function App() {
             <Route path="login" element={<LoginPage />} />
 
             <Route path="signup" element={<SignUp />} />
+            <Route path="forgotPassword" element={<ForgotPassword />} />
+
 
             <Route path="registeradmin" element={<RegisterPageAdmin />} />
             <Route path="loginadmin" element={<LoginPageAdmin />} />

@@ -26,7 +26,7 @@ const SignUp = () => {
 
   const validateFields = () => {
     if (!regNo || !pass || !newPass || !res) {
-      toast.error("The fields can't be empty.");
+      toast.info("Please fill all the fields.");
       return false;
     }
     if (regNo.length !== 9) {
@@ -85,9 +85,9 @@ const SignUp = () => {
 
         <input className="w-full px-4 py-2 focus-visible:outline-0 text-gray-700 rounded-lg bg-white" type="password" placeholder="Confirm Password" value={newPass} onChange={handleNewPassChange} />
 
-        <button type="submit" className="w-full py-2 bg-white text-[#006991] border border-white rounded-lg hover:bg-cyan-50/80 transition duration-300">Sign Up</button>
+        <button type="submit" className="w-full py-2 bg-transparent text-white border border-white rounded-lg  hover:bg-white/20 hover:text-white transition duration-300">Sign Up</button>
 
-        <a href="/LoginPage" className="text-white ml-60 hover:underline">Sign In</a>
+        <a href="/login" className="text-white ml-60 hover:underline">Sign In</a>
       </form>
       <ToastContainer position="top-right" autoClose={3000} />
     </div>
