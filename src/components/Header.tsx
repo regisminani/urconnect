@@ -13,24 +13,26 @@ const Header = () => {
     navigate("/login"); 
   };
   return (
-    <div className="">
-      <div className="hidden">
+    <div className="flex z-10 sticky top-0 bg-white bordb md:p-1 items-center justify-between ">
+      <div>
         <Logo />
       </div>
       <div
         onClick={() => setShow(!show)}
-        className="relative w-fit justify-self-end"
+        className="w-fit justify-self-end"
       >
         <div>
-          <div className="mr-4 cursor-pointer">
+          <div className="mr-3 cursor-pointer">
             <UserIcon />
           </div>
           {show && (
-            <div className="absolute right-0 mt-1 p-2 rounded-xl bg-white shadow-md shadow-black/25 ">
+            <div onClick={()=>setShow(false)} className="fixed inset-0">
+
+            <div className="absolute top-8 right-1 mt-1 p-2 rounded-xl bg-white shadow-md shadow-black/25 ">
               <div className="flex gap-1">
                 <UserIcon />
                 <div className="text-sm">
-                  <p className="font-semibold">2220***17</p>
+                  <p className="font-semibold">222022317</p>
                   <p className="font-medium text-[#9C9C9C]  -mt-[5px]">
                     @user-234
                   </p>
@@ -57,6 +59,7 @@ const Header = () => {
                 Trimester Credits: 4/5
               </p>
 
+            </div>
             </div>
           )}
         </div>

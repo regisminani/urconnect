@@ -1,6 +1,7 @@
 import { HiOutlineChat } from "react-icons/hi";
 import { IoArrowUpCircleOutline } from "react-icons/io5";
 import UserIcon from "./UserIcon";
+import { Link } from "react-router-dom";
 
 interface SuggestionProp {
   _id: string,
@@ -20,7 +21,7 @@ interface SuggestionProp {
   createdAt: string;
 }
 
-const Suggestion = ({comments, content, tags, upvotes, createdAt}:SuggestionProp) => {
+const Suggestion = ({_id,status ,comments, content, tags, upvotes, createdAt}:SuggestionProp) => {
   const date = new Date(createdAt)
   const day = String(date.getDate()).padStart(2, '0');
 const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
@@ -44,7 +45,7 @@ const formattedTime = `${hours}:${minutes} ${ampm}`;
           <p className="font-medium text-[#9C9C9C]  -mt-[5px]">@mrndi</p>
         </div>
       </div>
-      <p className="text-sm  mt-5">
+      <Link to={`/suggestions/${status}/${_id}`}  className="text-sm  mt-5">
         {content}
         {/* I am writing to request an increase in the monthly living allowance for
         students at the University of Rwanda from RWF 40,000 to RWF 100,000. The
@@ -56,12 +57,15 @@ const formattedTime = `${hours}:${minutes} ${ampm}`;
         adjustment to RWF 100,000 would provide much-needed financial support,
         allowing students to focus on their studies without the burden of
         financial stress. Thank you for considering this important request. */}
-      </p>
+      </Link>
 
       <div className="mt-3 flex items-center gap-12">
         <p className="text-sm font-[300] text-neutral-400 ml-1">
           {formattedTime} • {formattedDate} •{" "}
+          <span className="text-nowrap">
+
           <span className="font-bold text-black">120</span> Views
+          </span>
         </p>
         {/* Tags */}
         <div className="sm:flex gap-3 space-y-2 sm:space-y-0">

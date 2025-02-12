@@ -12,9 +12,12 @@ const Sidebar = () => {
     { link: "/groups", icon: HiOutlineUserGroup },
   ];
   return (
-    <div className="hidden sm:block w-44">
+    <div className="fixed sm:relative right-0 bottom-0 w-full sm:w-fit md:w-44 md:mt-11">
+      <div className="hidden ">
+
         <Logo/>
-      <div className="bg-[#F3FBFF] p-2 pl-4 pr-4 rounded-2xl w-fit sm:w-60">
+      </div>
+      <div className="bg-[#F3FBFF] p-2 pl-4 pr-4 rounded-2xl w-full sm:w-fit md:w-60 sm:sticky sm:top-24 flex justify-between sm:block">
         {pages.map((page) => (
           <SidebarRow key={page.link} Icon={page.icon} link={page.link} />
         ))}

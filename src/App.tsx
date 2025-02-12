@@ -18,6 +18,7 @@ import LoginPageAdmin from "./components/Login/LoginPageAdmin";
 
 import { ToastContainer } from "react-toastify";
 import ChoicePage from "./components/Login/ChoicePage";
+import SuggestionDetail from "./components/pages/suggestions/SuggestionDetail";
 
 
 function App() {
@@ -43,6 +44,9 @@ function App() {
           {/* Routes for the suggestions layout */}
           <Route path="/suggestions" element={<LayoutS />}>
             <Route index element={<Queue />} />
+            <Route path="queue">
+            <Route path=":suggestionID" element={<SuggestionDetail />} />
+            </Route>
             <Route path="pending" element={<Pending />} />
             <Route path="resolved" element={<Resolved />} />
           </Route>
