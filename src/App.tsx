@@ -7,15 +7,13 @@ import Layout from "./components/layouts/Layout";
 import NotFound from "./components/pages/NotFound";
 import LayoutHome from "./components/HomePage/LayoutHome";
 import Home from "./components/HomePage/Home"; // Make sure you import Home
-import About from "./components/HomePage/About"; // Make sure you import About
-import Suggestion from "./components/HomePage/Suggestion"; // Make sure you import Suggestion
 import LoginPage from './components/Login/LoginPage'; // Make sure you import LoginPage'
 import RegisterPageAdmin from "./components/Login/RegisterPageAdmin";
 import LoginPageAdmin from "./components/Login/LoginPageAdmin";
-
+import ChoicePage from "./components/Login/ChoicePage"; // Make sure
 import { ToastContainer } from "react-toastify";
-import ChoicePage from "./components/Login/ChoicePage";
-
+import About from "./components/HomePage/About";
+import Suggestion from "./components/HomePage/Suggestion";
 function App() {
   return (
     <div className="font-inter">
