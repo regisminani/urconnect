@@ -19,7 +19,7 @@ export interface StudentLogin {
   password: string;
 }
 export interface LoginResponse {
-  message: string;
+  success: boolean;
   token: string;
 }
 
@@ -41,6 +41,11 @@ export interface Suggestion {
         createdAt: string;
 }
 
+export interface SuggestionContent {
+  content: string;
+  tags?: string[];
+}
+
 export interface SuggestionQuery {
     status: string;
   }
@@ -57,15 +62,20 @@ export interface SuggestionQuery {
   });
   
 
-  export const loginStudent = (credentials: StudentLogin) => API.post("/api/student/login", credentials);
+export const loginStudent = (credentials: StudentLogin) => API.post("/api/student/login", credentials);
 /* export const loginStudent = (credentials: StudentLogin) =>{
-    const controller = new AbortController();
-    const request = API.post<LoginResponse>("/users/librarian/auth", credentials);
-    return { request, cancel: () => controller.abort() };} */
+  const controller = new AbortController();
+  const request = API.post<LoginResponse>("/api/student/login", credentials);
+  return { request, cancel: () => controller.abort() };} */
 
-    export const getSuggestions = (status?: string) => {
-        const controller = new AbortController();
-        const request = API.get<Suggestion[]>(`/api/suggestion/get/${status}`, { signal: controller.signal });
-        return { request, cancel: () => controller.abort() };
-      };
+export const getSuggestions = (status?: string) => {
+    const controller = new AbortController();
+    const request = API.get<Suggestion[]>(`/api/suggestion/get/${status}`, { signal: controller.signal });
+    return { request, cancel: () => controller.abort() };
+  };
+export const postSuggestion = (suggestion: SuggestionContent) => {
+    const controller = new AbortController();
+    const request = API.post(`/api/suggestion`, suggestion);
+    return { request, cancel: () => controller.abort() };
+   };
       

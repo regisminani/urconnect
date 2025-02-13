@@ -1,26 +1,34 @@
 import { SetStateAction, useState } from "react";
-import {  useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { loginStudent, StudentLogin } from "../../api";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const navigate = useNavigate()
   const [regNo, setRegNo] = useState("");
   const [pass, setPass] = useState("");
-  const navigate = useNavigate();
 
   // Handle RegNo Change
-  const handleRegChanges = (e: { target: { value: SetStateAction<string>; }; }) => {
+  const handleRegChanges = (e: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setRegNo(e.target.value);
   };
 
   // Handle Password Change
-  const handlePassChanges = (e: { target: { value: SetStateAction<string>; }; }) => {
+  const handlePassChanges = (e: {
+    target: { value: SetStateAction<string> };
+  }) => {
     setPass(e.target.value);
   };
 
   // Validate Inputs and Show Toasts
   const validateFields = () => {
+    if (regNo.length === 0 || pass.length === 0) {
+      toast.info("Please fill all the fields.");
+      return false;
+    }
     if (regNo.length !== 9) {
       toast.error("Reg No must be exactly 9 characters.");
       return false;
@@ -34,13 +42,13 @@ const LoginPage = () => {
     return true;
   };
 
-  const formData:StudentLogin = {
+  const formData: StudentLogin = {
     regNo: regNo,
     password: pass,
-  }
-  console.log(formData)
+  };
+  console.log(formData);
   // Handle Form Submission
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
+  const handleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
 
     if (validateFields()) {
@@ -58,25 +66,41 @@ const LoginPage = () => {
     }
   };
 
-  // Function to close the login screen
-  // const handleClose = () => {
-  //   setIsVisible(false);
-  // };
-
- 
   return (
-    <div className="ml-70 mt-14 w-[700px] h-[500px] flex rounded-10xl relative shadow-xl shadow-blue-500/30">
-      <div className="w-1/2 flex flex-col items-center justify-center border-2" style={{ borderColor: "#006991", borderTopLeftRadius: "10px", borderBottomLeftRadius: "10px" }}>
-        <div style={{ color: "#006991" }} className="text-5xl mt-10 text-center font-serif">
+    <div className="ml-70 mt-16 w-[700px] h-[500px] flex rounded-10xl relative shadow-2xl shadow-cyan-950 mb-10 font-inter" style={{
+      borderTopLeftRadius: "10px",
+      borderBottomLeftRadius: "10px",
+      borderBottomRightRadius:"10px",
+      borderTopRightRadius:"10px"
+    }}>
+      <div
+        className="w-1/2 flex flex-col items-center font-inter justify-center border-0"
+        style={{
+          borderTopLeftRadius: "10px",
+          borderBottomLeftRadius: "10px",
+        }}
+      >
+        <div
+          style={{ color: "#006991" }}
+          className="text-5xl mt-10 text-center"
+        >
           UR Connect
         </div>
         <div className="h-72 w-72">
-          <img src="/public/ur.jpg" alt="Ur-logo" className="w-full h-full object-contain mt-8" />
+          <img
+            src="/public/ur.jpg"
+            alt="Ur-logo"
+            className="w-full h-full object-contain mt-8"
+          />
         </div>
       </div>
 
       <form
-        style={{ backgroundColor: "#006991", borderTopRightRadius: "10px", borderBottomRightRadius: "10px" }}
+        style={{
+          backgroundColor: "#006991",
+          borderTopRightRadius: "10px",
+          borderBottomRightRadius: "10px",
+        }}
         className="w-1/2 relative p-6 flex flex-col items-center"
         onSubmit={handleSubmit}
       >
@@ -89,11 +113,11 @@ const LoginPage = () => {
           X
         </button> */}
 
-        <div className="text-white text-5xl mt-20 font-serif">Student Page</div>
-        <div className="text-white text-3xl mt-7 font-serif">Sign in</div>
+        <div className="text-white text-5xl mt-20 font-inter">Student Page</div>
+        <div className="text-white text-3xl mt-7 font-inter">Sign in</div>
 
         {/* Reg No Input */}
-        <label>
+        <label className="font-inter">
           <input
             className="focus-visible:outline-0 w-full px-13 mt-7 text-gray-700 rounded-lg p-2 bg-white"
             type="text"
@@ -123,10 +147,10 @@ const LoginPage = () => {
 
         {/* Links */}
         <div className="flex justify-between w-full text-sm mt-2">
-          <a href="#" className="text-white hover:underline mt-3">
+          <a href="/forgotPassword" className="text-white font-inter hover:underline mt-3">
             Forgot Password?
           </a>
-          <a href="#" className="text-white hover:underline mt-3">
+          <a href="/signup" className="text-white font-inter hover:underline mt-3">
             Sign up
           </a>
         </div>

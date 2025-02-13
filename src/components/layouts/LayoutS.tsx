@@ -5,7 +5,7 @@ const LayoutS = () => {
   return (
     <div>
       <Layout>
-      <SuggestionNav />
+        <SuggestionNav />
       </Layout>
     </div>
   );

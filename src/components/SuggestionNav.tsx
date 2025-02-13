@@ -9,9 +9,9 @@ const SuggestionNav = () => {
   ];
 
   return (
-    <div className="flex items-center gap-5 text-sm mb-6">
+    <div className="flex items-center gap-5 text-sm mb-6 w-fit mx-auto sm:mx-0">
        {links.map((link) => (
-        <Link to={link.to} key={link.name} className={`${path===link.to && 'font-bold'}`}>
+        <Link to={link.to} key={link.name} className={`${(path.includes(`${link.name.toLocaleLowerCase()}`) || path===link.to) && 'text-[#00628B] font-bold'}`}>
           {link.name}
         </Link>
       ))} 
