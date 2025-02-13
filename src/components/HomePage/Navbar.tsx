@@ -1,35 +1,42 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react"; // Icons for better UI
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-transparent">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-blue-900">UR-Connect</h1>
+    <header className="fixed top-0 left-0 w-full z-50 bg-white/30 backdrop-blur-md shadow-md">
+      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="flex items-center space-x-2">
+  <img src="./src/assets/logo.svg" alt="logo" className="w-12"/>
+  <h1 className="text-2xl font-bold text-[#006991]">UR-Connect</h1>
+</div>
+
         <button
           className="md:hidden text-blue-900 focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
         >
-          {isOpen ? "✖" : "☰"}
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
         <nav
-          className={`md:flex space-x-6 absolute md:static top-16 left-0 w-full md:w-auto p-4 md:p-0 bg-transparent md:bg-transparent shadow-md md:shadow-none transition-all duration-300 ease-in-out ${
-            isOpen ? "block bg-white" : "hidden"
+          className={`absolute md:static top-16 left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none transition-all duration-300 ease-in-out p-4 md:p-0 rounded-lg md:flex items-center space-x-6 ${
+            isOpen ? "block" : "hidden"
           }`}
         >
-          <Link to="/" className="block md:inline text-gray-600 text-md font-light hover:text-blue-700 transition-all duration-200">
+          <a href="/" className="block md:inline text-gray-700 hover:text-[#006991] px-4 py-2">
             Home
-          </Link>
-          <Link to="/about" className="block md:inline text-gray-600 text-md font-light hover:text-blue-700 transition-all duration-200">
+          </a>
+          <a href="#about" className="block md:inline text-gray-700 hover:text-[#006991] px-4 py-2">
             About
-          </Link>
-          <Link to="/suggestion" className="block md:inline text-gray-600 text-md font-light hover:text-blue-700 transition-all duration-200">
+          </a>
+          <a href="#suggestion" className="block md:inline text-gray-700 hover:text-[#006991] px-4 py-2">
             Suggestions
-          </Link>
-          
-          <Link to="/choice" className="block md:inline text-gray-600 text-md font-light hover:text-blue-600 hover:bg-blue-100 border rounded px-1  border-blue-900 transition-all duration-200">
+          </a>
+          <Link
+            to="/choice"
+            className="block md:inline text-blue-900 text-md font-medium hover:bg-[#006991] hover:text-white px-4 py-2 border border-blue-900 rounded-lg transition-all duration-300"
+          >
             Sign Up/Login
           </Link>
         </nav>
