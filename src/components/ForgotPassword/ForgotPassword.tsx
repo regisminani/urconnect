@@ -72,7 +72,7 @@ const ForgotPassword = () => {
 
   return (
     <div
-      className="h-[500px] w-[700px] ml-70 mt-14 mb-10  flex shadow-2xl shadow-cyan-950 font-serif"
+      className="h-[500px] w-[700px] ml-70 mt-14 mb-10 text-sm font-inter flex shadow-2xl shadow-cyan-950"
       style={{
         borderTopLeftRadius: "10px",
         borderBottomLeftRadius: "10px",
@@ -82,7 +82,7 @@ const ForgotPassword = () => {
     >
       <div className="w-1/2 " style={{ borderColor: "#006991" }}>
         <div
-          className="text-center font-serif justify-center flex-col text-5xl mt-9"
+          className="text-center justify-center flex-col text-5xl mt-9 font-inter"
           style={{ color: "#006991" }}
         >
           UR Connect
@@ -99,7 +99,7 @@ const ForgotPassword = () => {
 
       <form
         action=""
-        className="w-1/2 p-3 flex flex-col items-center"
+        className="w-1/2 p-3 flex flex-col items-center font-inter"
         style={{
           backgroundColor: "#006991",
           borderTopRightRadius: "10px",
@@ -107,12 +107,12 @@ const ForgotPassword = () => {
         }}
         onSubmit={handleSubmit}
       >
-        <div className="text-white text-5xl mt-6 font-serif">Student Page</div>
-        <div className="text-white text-3xl mt-4 font-serif">
+        <div className="text-white text-5xl mt-6 font-inter">Student Page</div>
+        <div className="text-white text-2xl mt-8 font-inter">
           Forgot Password
         </div>
 
-        <label htmlFor="">
+        <label htmlFor="" className="font-inter">
           <input
             type="text"
             placeholder="Reg No"
@@ -123,8 +123,8 @@ const ForgotPassword = () => {
 
           <select
             name="Questions"
-            id="secret-quest"
-            className="bg-white text-gray-700 focus-visible:outline-0 w-full mt-4 pl-12 px-13 rounded-lg p-2 font-sans"
+            id="secret-question"
+            className="bg-white text-gray-700 focus-visible:outline-0 w-full mt-4 pl-12 px-13 rounded-lg p-2 font-inter"
           >
             <option value="1">What is your hobby?</option>
             <option value="2">When is your birthday?</option>
@@ -151,7 +151,7 @@ const ForgotPassword = () => {
           <input
             type="password"
             placeholder="Confirm Password"
-            className="focus-visible:outline-0 w-full px-13 mt-5 text-gray-700 rounded-lg p-2 bg-white"
+            className="focus-visible:outline-0 w-full px-13 mt-5 text-gray-700 rounded-lg p-2 bg-white "
             value={newPass}
             onChange={handleNewPassChange}
           />
