@@ -27,7 +27,10 @@ const SuggestionInput = () => {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = async (formData: SuggestionContent) => {
+    console.log("clicked");
     setLoading(true);
+    formData.tags = tagChoice;
+    console.log("THE FORMDATA",formData)    
     const { request, cancel } = postSuggestion(formData);
     request
       .then((res) => {
@@ -44,13 +47,10 @@ const SuggestionInput = () => {
   const tagOptions = ["Principal", "Dean", "HOD"];
   const [tagChoice, setTagChoice] = useState<string[]>([]);
   const [tagSearch, setTagSearch] = useState("");
-  const ref = useRef(null);
 
-  console.log("tag choice", tagChoice);
   const handleTagChoice = (tag: string) => {
-    console.log("selected tag", tag);
     !tagChoice.includes(tag) && setTagChoice([...tagChoice, tag]);
-    setTagSearch('')
+    setTagSearch("");
   };
   return (
     <form
@@ -68,22 +68,22 @@ const SuggestionInput = () => {
           {...register("content")}
           type="text"
           placeholder="Share your suggestion..."
-          className="outline-none text-sm"
+          className="outline-none text-sm w-full"
         />
       </div>
       {errors.content && (
         <p className="text-red-500 text-xs">{errors.content.message}</p>
       )}
+
       {message && <p className="text-red-500 text-xs">{message}</p>}
       <div className="mt-4 sm:flex sm:justify-between w-full">
-        <div className="">
+        <div>
           <div className="flex items-center gap-2">
             <p className="text-[#737272] font-semibold text-sm">
               Tag authority*
             </p>
             <div className="relative bg-white rounded-full flex items-center p-1">
               <input
-                ref={ref}
                 type="text"
                 className=" pl-2 outline-none text-xs "
                 placeholder="Search..."
@@ -92,30 +92,29 @@ const SuggestionInput = () => {
               />
               {tagSearch && (
                 <div className="absolute top-7 right-0 w-full rounded-md shadow-lg p-1 bg-white border border-neutral-200">
-                  {
-                  
-                  tagOptions
-                    .filter((t) =>
-                      t
-                        .toLocaleLowerCase()
-                        .includes(tagSearch.toLocaleLowerCase())
-                    ).length > 0?
-                  tagOptions
-                    .filter((t) =>
-                      t
-                        .toLocaleLowerCase()
-                        .includes(tagSearch.toLocaleLowerCase())
-                    )
-                    .map((tag) => (
-                      <p
-                        key={tag}
-                        onClick={() => handleTagChoice(tag)}
-                        className="text-xs hover:bg-blue-50 rounded-md mb-1 p-1 cursor-pointer"
-                      >
-                        {tag}
-                        
-                      </p>
-                    )): <p className=" text-sm animate-pulse">...</p>}
+                  {tagOptions.filter((t) =>
+                    t
+                      .toLocaleLowerCase()
+                      .includes(tagSearch.toLocaleLowerCase())
+                  ).length > 0 ? (
+                    tagOptions
+                      .filter((t) =>
+                        t
+                          .toLocaleLowerCase()
+                          .includes(tagSearch.toLocaleLowerCase())
+                      )
+                      .map((tag) => (
+                        <p
+                          key={tag}
+                          onClick={() => handleTagChoice(tag)}
+                          className="text-xs hover:bg-blue-50 rounded-md mb-1 p-1 cursor-pointer"
+                        >
+                          {tag}
+                        </p>
+                      ))
+                  ) : (
+                    <p className=" text-sm animate-pulse">...</p>
+                  )}
                 </div>
               )}
             </div>
@@ -142,7 +141,7 @@ const SuggestionInput = () => {
           <button
             disabled={!isValid}
             type="submit"
-            className="bg-[#00628B] block mx-auto font-semibold text-xs p-1 text-white text-center  rounded-full pl-4 pr-4 active:scale-95 cursor-pointer"
+            className="bg-[#00628B] block mx-auto font-semibold text-xs p-1 text-white text-center  rounded-full pl-4 pr-4 active:scale-95 cursor-pointer disabled:opacity-50 disabled:scale-100"
           >
             {isLoading ? (
               <div>

@@ -73,9 +73,22 @@ export const getSuggestions = (status?: string) => {
     const request = API.get<Suggestion[]>(`/api/suggestion/get/${status}`, { signal: controller.signal });
     return { request, cancel: () => controller.abort() };
   };
+
+export const getSuggestion = (id?: string) => {
+    const controller = new AbortController();
+    const request = API.get<Suggestion>(`/api/suggestions/${id}`, { signal: controller.signal });
+    return { request, cancel: () => controller.abort() };
+  };
+
+
 export const postSuggestion = (suggestion: SuggestionContent) => {
     const controller = new AbortController();
     const request = API.post(`/api/suggestion`, suggestion);
     return { request, cancel: () => controller.abort() };
    };
       
+
+// Socket code for realtime functionality
+/* import { io } from "socket.io-client";
+
+const socket = io('https://ur-connect.onrender.com/suggestions') */
