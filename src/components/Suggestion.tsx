@@ -2,61 +2,68 @@ import { HiOutlineChat } from "react-icons/hi";
 import { IoArrowUpCircleOutline } from "react-icons/io5";
 import UserIcon from "./UserIcon";
 import { Link } from "react-router-dom";
+import { viewSuggestion, voteSuggestion } from "../api";
+import { Suggestion as S } from "../types";
+import { formatDate } from "../utils/helpers";
+import { useInView } from 'react-intersection-observer';
+import { useEffect, useState } from "react";
+import { CanceledError } from "axios";
 
-interface SuggestionProp {
-  _id: string,
-  content: string,
-  tags: string[],
-  by: string,
-  upvotes: number,
-  downvotes: number,
-  comments: string[];
-  status: string,
-  reply: [
-    {
-      by: string;
-      content: string
-    }
-  ],
-  createdAt: string;
+const Suggestion = ({_id,by,status ,comments, content, tags,views, votes, createdAt}:S) => {
+const [loading, setLoading] = useState(false)
+const [message, setMessage] = useState('')
+const {formattedDate, formattedTime} = formatDate(createdAt)
+const { ref, inView } = useInView({
+  triggerOnce: true, // Optional: Trigger only once when it comes into view
+  threshold: 0.1, // Optional: Adjust visibility threshold
+});
+
+const handleVote = () => {
+  setLoading(true);
+ const {request, cancel} = voteSuggestion(_id, {vote:'up'})
+ request
+       .then((res) => {
+         setMessage(res.data.message);
+         setLoading(false);
+       })
+       .catch((err) => {
+         if (err instanceof CanceledError) return;
+         setMessage(err.message);
+         setLoading(false);
+       });
+     return () => cancel();
+}
+const handleView = () => {
+  setLoading(true);
+ const {request, cancel} = viewSuggestion(_id, {view:true})
+ request
+       .then((res) => {
+         console.log(res.data.message);
+         setLoading(false);
+       })
+       .catch((err) => {
+         if (err instanceof CanceledError) return;
+         console.log(err.message);
+         setLoading(false);
+       });
+     return () => cancel();
 }
 
-const Suggestion = ({_id,status ,comments, content, tags, upvotes, createdAt}:SuggestionProp) => {
-  const date = new Date(createdAt)
-  const day = String(date.getDate()).padStart(2, '0');
-const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
-const year = date.getFullYear();
+useEffect(()=>{
+  inView && handleView()
+}, [inView])
 
-let hours :string | number = date.getHours();
-const minutes = String(date.getMinutes()).padStart(2, '0');
-const ampm = hours >= 12 ? 'PM' : 'AM';
-hours = hours % 12;
-hours = hours ? hours : 12; 
-hours = String(hours).padStart(2, '0');
-
-const formattedDate = `${day}/${month}/${year}`;
-const formattedTime = `${hours}:${minutes} ${ampm}`;
   return (
-    <div className="bg-[#F7F7F7] shadow-md shadow-black/25 rounded-xl p-2 pl-4 pr-4">
+    <div ref={ref} className="bg-[#F7F7F7] shadow-md shadow-black/25 rounded-xl p-2 pl-4 pr-4">
       <div className="flex gap-1">
-        <UserIcon v />
+        <UserIcon username={by.username} />
         <div className="text-sm">
-          <p className="font-semibold">2220***23</p>
-          <p className="font-medium text-[#9C9C9C]  -mt-[5px]">@mrndi</p>
+          <p className="font-semibold">{`${by.regNo.slice(0, 3)}***${by.regNo.slice(6)}`}</p>
+          <p className="font-medium text-[#9C9C9C]  -mt-[5px]">@{by.username}</p>
         </div>
       </div>
       <Link to={`/suggestions/${status}/${_id}`}  className="text-sm  mt-5">
         {content}
-        {/* I am writing to request an increase in the monthly living allowance for
-        students at the University of Rwanda from RWF 40,000 to RWF 100,000. The
-        current allowance has not kept pace with the rising costs of living,
-        including significant increases in food and accommodation prices, which
-        have made it increasingly difficult for students to meet their basic
-        needs. Many students are struggling to afford essentials, which
-        negatively impacts their academic performance and overall well-being. An
-        adjustment to RWF 100,000 would provide much-needed financial support,
-        allowing students to focus on their studies without the burden of
-        financial stress. Thank you for considering this important request. */}
       </Link>
 
       <div className="mt-3 flex items-center gap-12">
@@ -64,7 +71,7 @@ const formattedTime = `${hours}:${minutes} ${ampm}`;
           {formattedTime} • {formattedDate} •{" "}
           <span className="text-nowrap">
 
-          <span className="font-bold text-black">120</span> Views
+          <span className="font-bold text-black">{views}</span> Views
           </span>
         </p>
         {/* Tags */}
@@ -80,22 +87,23 @@ const formattedTime = `${hours}:${minutes} ${ampm}`;
       <hr className="mt-2 text-neutral-300" />
       <div className="flex items-center gap-2 mt-2">
         <p className="text-sm font-[300] text-neutral-400 ml-1">
-          <span className="font-bold text-black">{/* 98 */}{upvotes}</span> Upvotes
+          <span className="font-bold text-black">{votes}</span> Upvotes
         </p>
         <p className="text-sm font-[300] text-neutral-400 ml-1">
-          <span className="font-bold text-black">{comments.length}</span> Comment{comments.length !==1 &&'s'}
+          <span className="font-bold text-black">{comments}</span> Comment{comments !==1 &&'s'}
         </p>
       </div>
       <hr className="mt-2 text-neutral-300" />
       {/* Upvote/Comment */}
       <div className="flex items-center ml-5 mt-2 mb-1 gap-20">
-        <button type="button">
-          <IoArrowUpCircleOutline className="w-7 h-7 text-neutral-500  active:scale-95 cursor-pointer" />
+        <button type="button" onClick={handleVote} disabled={loading}>
+          <IoArrowUpCircleOutline className="w-7 h-7 text-neutral-500  active:scale-95 cursor-pointer disabled:animate-pulse disabled:scale-100" />
         </button>
-        <button>
+        <Link to={`/suggestions/${status}/${_id}`} >
           <HiOutlineChat className="w-7 h-7 text-neutral-500 stroke-[1.5px] active:scale-95 cursor-pointer" />
-        </button>
+        </Link>
       </div>
+      {message && <p className="text-xs text-red-300">{message}</p>}
     </div>
   );
 };

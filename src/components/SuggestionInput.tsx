@@ -2,11 +2,13 @@ import { useForm } from "react-hook-form";
 import UserIcon from "./UserIcon";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { postSuggestion, SuggestionContent } from "../api";
+import { postSuggestion } from "../api";
 import { CanceledError } from "axios";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { PiSpinner } from "react-icons/pi";
 import { IoIosClose } from "react-icons/io";
+import { SuggestionContent } from "../types";
+
 
 const schema = z.object({
   content: z
@@ -17,7 +19,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const SuggestionInput = () => {
+const SuggestionInput = ({username}:{username:String}) => {
   const [message, setMessage] = useState("");
   const [isLoading, setLoading] = useState(false);
   const {
@@ -26,11 +28,10 @@ const SuggestionInput = () => {
     formState: { errors, isValid },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
-  const onSubmit = async (formData: SuggestionContent) => {
-    console.log("clicked");
+  const onSubmit = (formData: SuggestionContent) => {
+    setMessage('')
     setLoading(true);
     formData.tags = tagChoice;
-    console.log("THE FORMDATA",formData)    
     const { request, cancel } = postSuggestion(formData);
     request
       .then((res) => {
@@ -63,7 +64,7 @@ const SuggestionInput = () => {
         </p>
       </div>
       <div className="bg-white p-1 rounded-full flex items-center gap-2 mt-2">
-        <UserIcon />
+        <UserIcon username={username}/>
         <input
           {...register("content")}
           type="text"

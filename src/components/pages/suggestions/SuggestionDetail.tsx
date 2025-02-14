@@ -1,51 +1,52 @@
 import { CgSpinner } from "react-icons/cg";
-import { HiOutlineChat } from "react-icons/hi";
 import { HiArrowSmallLeft } from "react-icons/hi2";
 import { IoArrowUpCircleOutline } from "react-icons/io5";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import useSuggestion from "../../../hooks/useSuggestion";
 import UserIcon from "../../UserIcon";
-import { FaRegSadTear, FaSadCry } from "react-icons/fa";
+import { FaRegSadTear } from "react-icons/fa";
+import { formatDate } from "../../../utils/helpers";
+import CommentInput from "../../CommentInput";
+import CommentSection from "../../CommentSection";
 
 const SuggestionDetail = () => {
   const { suggestionID } = useParams();
   const { loading, error, suggestion } = useSuggestion(suggestionID);
-  const { _id, status, comments, content, tags, upvotes, createdAt } =
-    suggestion;
+  console.log("THE SUGGESION",suggestion)
+  const {
+    _id,
+    status,
+    comments,
+    content,
+    tags,
+    views,
+    by,
+    votes,
+    createdAt,
+  } = suggestion;
 
-  const navigate = useNavigate();
-  const date = new Date(createdAt);
-  const day = String(date.getDate()).padStart(2, "0");
-  const month = String(date.getMonth() + 1).padStart(2, "0"); // Month is 0-indexed
-  const year = date.getFullYear();
-
-  let hours: string | number = date.getHours();
-  const minutes = String(date.getMinutes()).padStart(2, "0");
-  const ampm = hours >= 12 ? "PM" : "AM";
-  hours = hours % 12;
-  hours = hours ? hours : 12;
-  hours = String(hours).padStart(2, "0");
-
-  const formattedDate = `${day}/${month}/${year}`;
-  const formattedTime = `${hours}:${minutes} ${ampm}`;
+ const navigate = useNavigate();
+ const {formattedDate, formattedTime} = formatDate(createdAt)
   return (
-    <div onClick={() => navigate(-1)} className="bg-black/50 fixed inset-0 z-20">
-      <div className="bg-white fixed inset-0 sm:ml-32 md:ml-60">
+    <div
+      className="bg-black/50 fixed inset-0 z-20"
+    >
+      <div className="bg-white fixed inset-0 sm:ml-32 transition delay-150 duration-300 ease-in-out md:ml-60">
         <div className="p-5">
           <HiArrowSmallLeft
             size={26}
             className="text-[#00628B] cursor-pointer"
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/suggestions")}
           />
           {_id !== "" ? (
-            <div className="mt-3">
+            <div className="mt-5 ml-10">
               <div className="flex gap-1">
-                <UserIcon v />
+                <UserIcon username={by?.username} />
 
                 <div className="text-sm">
-                  <p className="font-semibold">2220***23</p>
+                  <p className="font-semibold">{`${by?.regNo.slice(0, 3)}***${by?.regNo.slice(6)}`}</p>
                   <p className="font-medium text-[#9C9C9C]  -mt-[5px]">
-                    @mrndi
+                    @{by?.username}
                   </p>
                 </div>
               </div>
@@ -60,12 +61,12 @@ const SuggestionDetail = () => {
                 <p className="text-sm font-[300] text-neutral-400 ml-1">
                   {formattedTime} • {formattedDate} •{" "}
                   <span className="text-nowrap">
-                    <span className="font-bold text-black">120</span> Views
+                    <span className="font-bold text-black">{views}</span> Views
                   </span>
                 </p>
                 {/* Tags */}
                 <div className="sm:flex gap-3 space-y-2 sm:space-y-0">
-                  {tags.map((tag) => (
+                  {tags  && tags.map((tag) => (
                     <div
                       key={tag}
                       className="bg-neutral-300 w-fit p-1 pl-7 pr-7 rounded-full"
@@ -82,15 +83,15 @@ const SuggestionDetail = () => {
                 <p className="text-sm font-[300] text-neutral-400 ml-1">
                   <span className="font-bold text-black">
                     {/* 98 */}
-                    {upvotes}
+                    {votes}
                   </span>{" "}
                   Upvotes
                 </p>
                 <p className="text-sm font-[300] text-neutral-400 ml-1">
                   <span className="font-bold text-black">
-                    {comments.length}
+                    {comments}
                   </span>{" "}
-                  Comment{comments.length !== 1 && "s"}
+                  Comment{comments !== 1 && "s"}
                 </p>
               </div>
               <hr className="mt-2 text-neutral-300" />
@@ -99,9 +100,15 @@ const SuggestionDetail = () => {
                 <button type="button">
                   <IoArrowUpCircleOutline className="w-7 h-7 text-neutral-500  active:scale-95 cursor-pointer" />
                 </button>
-                <button>
-                  <HiOutlineChat className="w-7 h-7 text-neutral-500 stroke-[1.5px] active:scale-95 cursor-pointer" />
-                </button>
+                
+              </div>
+              <div className=" mt-5">
+              <hr className="mt-2 text-neutral-300" />
+               <CommentInput id={_id}/>
+               <div>
+                <CommentSection id={_id}/>
+               
+               </div>
               </div>
             </div>
           ) : (

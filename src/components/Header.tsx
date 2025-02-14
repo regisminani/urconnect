@@ -3,10 +3,12 @@ import UserIcon from "./UserIcon";
 import Logo from "./Logo";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import fetchUser from "../hooks/fetchUser";
 
 const Header = () => {
   const navigate = useNavigate()
   const [show, setShow] = useState(false);
+  const {user} = fetchUser()
   const handleLogout = () => {
     toast.success('Logged out Successfully!');
     localStorage.removeItem("token");
@@ -23,18 +25,18 @@ const Header = () => {
       >
         <div>
           <div className="mr-3 cursor-pointer">
-            <UserIcon />
+            <UserIcon username={user.username}/>
           </div>
           {show && (
             <div onClick={()=>setShow(false)} className="fixed inset-0">
 
             <div className="absolute top-8 right-1 mt-1 p-2 rounded-xl bg-white shadow-md shadow-black/25 border border-neutral-100">
               <div className="flex gap-1">
-                <UserIcon />
+                <UserIcon username={user.username}/>
                 <div className="text-sm">
-                  <p className="font-semibold">222022317</p>
+                  <p className="font-semibold">{user.regNo}</p>
                   <p className="font-medium text-[#9C9C9C]  -mt-[5px]">
-                    @user-234
+                    @{user.username}
                   </p>
                 </div>
               </div>

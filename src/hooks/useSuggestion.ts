@@ -1,28 +1,22 @@
 import { useEffect, useState } from "react";
-import { CanceledError } from "axios";
-import { getSuggestion, Suggestion} from "../api";
-import { defaultSuggestion } from "../types";
+import { defaultSuggestion, Suggestion } from "../types";
+import { io } from "socket.io-client";
+
 const useSuggestion = (suggestionQuery?:string) => {
+    const socket = io("https://ur-connect.onrender.com/suggestions");
+    socket.emit("singlePost", suggestionQuery);
     const [suggestion, setSuggestion] = useState<Suggestion>(defaultSuggestion);
       const [error, setError] = useState("");
       const [loading, setLoading] = useState(false);
      
- // afterRender
-  useEffect(() => {
-    // get -> promise -> res / err
+  useEffect(() => { 
     setLoading(true);
-    const { request, cancel } = getSuggestion(suggestionQuery);
-    request
-      .then((res) => {
-        setSuggestion(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        if (err instanceof CanceledError) return;
-        setError(err.message);
-        setLoading(false);
-      });
-    return () => cancel();
+    socket.on("singlePost", function (msg: Suggestion) {
+      setSuggestion(msg)
+      if(!msg) setError("No suggestion")
+        setLoading(false)
+      }
+    );
   }, []);
   return { suggestion, error, loading, setSuggestion, setError }
 }
