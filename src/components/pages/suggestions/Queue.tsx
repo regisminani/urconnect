@@ -1,13 +1,16 @@
+import fetchUser from "../../../hooks/fetchUser";
 import useSuggestions from "../../../hooks/useSuggestions";
 import Suggestion from "../../Suggestion";
 import SuggestionAlt from "../../SuggestionAlt";
 import SuggestionInput from "../../SuggestionInput";
 
 const Queue = () => {
-  const { loading, error, suggestions } = useSuggestions("queue");
+  let { loading, error, suggestions } = useSuggestions("queue");
+  const {user} = fetchUser()
+  console.log(suggestions);
   return (
     <div className="space-y-5">
-      <SuggestionInput />
+      <SuggestionInput username={user.username}/>
       {error && <p>{error}</p>}
       {loading && <p>Loading...</p>}
       {suggestions.map((s) => (
@@ -16,12 +19,13 @@ const Queue = () => {
           _id={s._id}
           content={s.content}
           tags={s.tags}
+          views={s.views}
           by={s.by}
-          upvotes={s.upvotes}
-          downvotes={s.downvotes}
+          votes={s.votes}
           status={s.status}
           comments={s.comments}
-          reply={s.reply}
+          replies={s.replies}
+          reports={s.reports}
           createdAt={s.createdAt}
         />
       ))}
