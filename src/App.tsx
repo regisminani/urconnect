@@ -18,7 +18,6 @@ import RegisterPageAdmin from "./components/Login/RegisterPageAdmin";
 import LoginPageAdmin from "./components/Login/LoginPageAdmin";
 import ChoicePage from "./components/Login/ChoicePage"; // Make sure
 import { ToastContainer } from "react-toastify";
-import ChoicePage from "./components/Login/ChoicePage";
 import SuggestionDetail from "./components/pages/suggestions/SuggestionDetail";
 
 
