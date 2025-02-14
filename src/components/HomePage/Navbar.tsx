@@ -9,7 +9,7 @@ const Navbar: React.FC = () => {
     <header className="fixed top-0 left-0 w-full z-50 bg-white/30 backdrop-blur-md shadow-md">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
       <div className="flex items-center space-x-2">
-  <img src="./src/assets/logo.svg" alt="logo" className="w-12"/>
+  <img src="/logo.svg" alt="logo" className="w-12"/>
   <h1 className="text-2xl font-bold text-[#006991]">UR-Connect</h1>
 </div>
 
