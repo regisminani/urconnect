@@ -38,7 +38,7 @@ const SuggestionDetail = () => {
             className="text-[#00628B] cursor-pointer"
             onClick={() => navigate("/suggestions")}
           />
-          {_id !== "" ? (
+          {_id !== "" && createdAt  ? (
             <div className="mt-5 ml-10">
               <div className="flex gap-1">
                 <UserIcon username={by?.username} />

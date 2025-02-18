@@ -8,6 +8,7 @@ import { useState } from "react";
 import { PiSpinner } from "react-icons/pi";
 import { IoIosClose } from "react-icons/io";
 import { SuggestionContent } from "../types";
+import useRoles from "../hooks/useRoles";
 
 
 const schema = z.object({
@@ -45,7 +46,8 @@ const SuggestionInput = ({username}:{username:String}) => {
       });
     return () => cancel();
   };
-  const tagOptions = ["Principal", "Dean", "HOD"];
+  const {roles, loading, error} = useRoles()
+  const tagOptions = (!error && !loading && roles) ? roles : ["Principal", "Dean", "HOD"];
   const [tagChoice, setTagChoice] = useState<string[]>([]);
   const [tagSearch, setTagSearch] = useState("");
 

@@ -26,6 +26,7 @@ export const getSuggestions = (status?: string) => {
     return { request, cancel: () => controller.abort() };
   };
 
+
 export const getSuggestion = (id?: string) => {
     const controller = new AbortController();
     const request = API.get<Suggestion>(`/api/student/suggestions/${id}`, { signal: controller.signal });
@@ -59,5 +60,11 @@ export const postComment = (id:string,comment: CommentContent) => {
  export const getComments = (id: string) => {
   const controller = new AbortController();
   const request = API.get<CommentShape[]>(`/api/suggestion/comment/${id}`, { signal: controller.signal });
+  return { request, cancel: () => controller.abort() };
+};
+
+export const getRoles = () => {
+  const controller = new AbortController();
+  const request = API.get<string[]>(`/api/staff/roles`, { signal: controller.signal });
   return { request, cancel: () => controller.abort() };
 };
