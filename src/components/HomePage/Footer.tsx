@@ -1,36 +1,40 @@
-import { Link } from "react-router-dom";
+import React from "react";
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
-    <footer className="bg-white text-gray-600 py-8 mt-auto">
-      <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
-        <div className="text-center md:text-left">
-          <h1 className="text-2xl font-bold text-blue-900">UR-Connect</h1>
-          <p className="text-sm font-light">University of Rwanda suggestion box</p>
-        </div>
-        <div className="flex space-x-12 mt-4 md:mt-0">
-          <div className="text-center md:text-left">
-            <h3 className="font-semibold text-md text-gray-800">Company</h3>
-            <a href="#" className="text-sm font-light hover:text-blue-700 block mt-2">
+    <footer className="bg-gray-100 mt-10">
+      <div className="relative mx-auto max-w-screen-xl px-4 py-2 sm:px-6 lg:px-8 lg:pt-12">
+        <div className="lg:flex lg:items-end lg:justify-between">
+          <div>
+            <div className="flex justify-center text-[#006991] lg:justify-start">
+              <div className="flex items-center space-x-2">
+                <img src="/logo.svg" alt="logo" className="w-12" />
+                <h1 className="text-2xl font-bold text-[#006991]">UR-Connect</h1>
+              </div>
+            </div>
+
+            <p className="mx-auto max-w-md text-center leading-relaxed text-gray-500 lg:text-left">
+              UR-Connect is a platform designed to enhance collaboration and engagement within the University of Rwanda community.
+            </p>
+          </div>
+
+          <ul className="mt-8 flex flex-wrap justify-center gap-6 md:gap-8 lg:mt-0 lg:justify-end lg:gap-12">
+            <a href="/" className="block md:inline text-gray-700 hover:text-[#006991] px-4 py-2">
+              Home
+            </a>
+            <a href="#about" className="block md:inline text-gray-700 hover:text-[#006991] px-4 py-2">
               About
             </a>
-          </div>
-          <div className="text-center md:text-left">
-            <h3 className="font-semibold text-md text-gray-800">Contact</h3>
-            <a href="#" className="text-sm font-light hover:text-blue-700 block mt-2">
-              Help/FAQ
+            <a href="#suggestion" className="block md:inline text-gray-700 hover:text-[#006991] px-4 py-2">
+              Suggestions
             </a>
-          </div>
+          </ul>
         </div>
-        <Link to="/login">
-          <button className="mt-4 md:mt-0 px-6 py-2 bg-blue-600 text-white rounded-full shadow hover:bg-blue-700">
-            Explore more
-          </button>
-        </Link>
+
+        <p className="mt-8 text-center text-sm text-gray-500 lg:text-right">
+          Copyright &copy; 2025. All rights reserved.
+        </p>
       </div>
-      <p className="text-center text-sm font-light text-gray-500 mt-4">
-        &copy; 2025 All rights reserved @urcst.com
-      </p>
     </footer>
   );
 };

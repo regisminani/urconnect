@@ -1,8 +1,9 @@
 import { SetStateAction, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { loginStudent, StudentLogin } from "../../api";
+import { loginStudent } from "../../api";
 import { useNavigate } from "react-router-dom";
+import { StudentLogin } from "../../types";
 
 const LoginPage = () => {
   const navigate = useNavigate()
