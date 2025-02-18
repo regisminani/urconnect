@@ -19,6 +19,7 @@ import SuggestionDetail from "./components/pages/suggestions/SuggestionDetail";
 
 import LayoutTwo from "./components/Admin/LayoutTwo";
 import HomeAdmin from "./components/Admin/HomeAdmin";
+import AnsweredSuggestion from "./components/Admin/AnsweredSuggestion";
 
 function App() {
   return (
@@ -39,11 +40,7 @@ function App() {
 
           <Route path="/admin" element={<LayoutTwo />}>
             <Route index element={<HomeAdmin />} />
-            {/* <Route path="suggestion" element={<Suggestion />} />
-            <Route path="pending" element={<Pending />} />
-            <Route path="queue" element={<Queue />} />
-            <Route path="resolved" element={<Resolved />} />
-            <Route path="mysuggestion" element={<MySuggestion />} /> */}
+            <Route path="answered" element={<AnsweredSuggestion />} />
           
           </Route>
 
