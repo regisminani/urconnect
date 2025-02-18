@@ -50,7 +50,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="ml-[460px] w-[400px] h-auto bg-white shadow-2xl shadow-[#006991] mt-25 flex flex-col items-center font-sans" style={{ borderRadius: "15px" }}>
+    <div className="ml-[460px] w-[400px] h-auto bg-white shadow-2xl shadow-[#006991] mt-25 mb-30 flex flex-col items-center font-sans" style={{ borderRadius: "15px" }}>
       <div className="relative top-[-45px] h-25 w-25 bg-[#006991]" style={{ borderRadius: "50%" }}>
         <img src="/public/th.jpg" alt="Logo" style={{ borderRadius: "50%" }} />
       </div>
