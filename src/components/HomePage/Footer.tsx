@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
           <div>
             <div className="flex justify-center text-[#006991] lg:justify-start">
               <div className="flex items-center space-x-2">
-                <img src="./src/assets/logo.svg" alt="logo" className="w-12" />
+                <img src="/logo.svg" alt="logo" className="w-12" />
                 <h1 className="text-2xl font-bold text-[#006991]">UR-Connect</h1>
               </div>
             </div>

@@ -9,18 +9,16 @@ import LayoutHome from "./components/HomePage/LayoutHome";
 import Home from "./components/HomePage/Home"; // Make sure you import Ho
 import About from "./components/HomePage/About"; // Make sure you import About
 import Suggestion from "./components/HomePage/Suggestion"; // Make sure you import Suggestion
-
 import SignUp from "./components/SignUp/SignUp";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
-
 import LoginPage from './components/Login/LoginPage'; // Make sure you import LoginPage'
 import RegisterPageAdmin from "./components/Login/RegisterPageAdmin";
 import LoginPageAdmin from "./components/Login/LoginPageAdmin";
-import ChoicePage from "./components/Login/ChoicePage"; // Make sure
 import { ToastContainer } from "react-toastify";
-import ChoicePage from "./components/Login/ChoicePage";
 import SuggestionDetail from "./components/pages/suggestions/SuggestionDetail";
 
+import LayoutTwo from "./components/Admin/LayoutTwo";
+import HomeAdmin from "./components/Admin/HomeAdmin";
 
 function App() {
   return (
@@ -33,15 +31,20 @@ function App() {
             <Route path="about" element={<About />} />
             <Route path="suggestion" element={<Suggestion />} />
             <Route path="login" element={<LoginPage />} />
-
             <Route path="signup" element={<SignUp />} />
             <Route path="forgotPassword" element={<ForgotPassword />} />
-
-
             <Route path="registeradmin" element={<RegisterPageAdmin />} />
             <Route path="loginadmin" element={<LoginPageAdmin />} />
-            <Route path="choice" element={<ChoicePage />} />
+          </Route>
 
+          <Route path="/admin" element={<LayoutTwo />}>
+            <Route index element={<HomeAdmin />} />
+            {/* <Route path="suggestion" element={<Suggestion />} />
+            <Route path="pending" element={<Pending />} />
+            <Route path="queue" element={<Queue />} />
+            <Route path="resolved" element={<Resolved />} />
+            <Route path="mysuggestion" element={<MySuggestion />} /> */}
+          
           </Route>
 
           {/* Routes for the suggestions layout */}
