@@ -5,6 +5,7 @@ import { z } from "zod";
 import { postComment } from "../api";
 import { CommentContent } from "../types";
 import { CanceledError } from "axios";
+import { PiSpinner } from "react-icons/pi";
 
 const schema = z.object({
   content: z
@@ -20,7 +21,7 @@ const CommentInput = ({ id }: { id: string }) => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (formData: CommentContent) => {
@@ -45,7 +46,7 @@ const CommentInput = ({ id }: { id: string }) => {
         <textarea
           {...register("content")}
           id="content"
-          className="w-full h-20 ring-1 ring-blue-200 resize-none outline-none rounded-md mt-3"
+          className="w-full h-20 text-sm pl-2 ring-1 ring-blue-200 resize-none outline-none rounded-md mt-3"
           placeholder="Add your comment..."
           name="content"
         />
@@ -54,7 +55,21 @@ const CommentInput = ({ id }: { id: string }) => {
         )}
 
         {message && <p className="text-red-500 text-xs">{message}</p>}
-        <button className="bg-gray-300 rounded-md p-1">{isLoading ? "Sending..." : "Send"}</button>
+        {/* <button className="bg-gray-300 rounded-md p-1">{isLoading ? "Sending..." : "Send"}</button> */}
+        <button
+        disabled={!isValid}
+                    type="submit"
+                    className="bg-[#00628B]  font-semibold text-xs p-1 text-white text-center  rounded-full pl-4 pr-4 active:scale-95 cursor-pointer disabled:opacity-50 disabled:scale-100"
+                  >
+                    {isLoading ? (
+                      <div>
+                        Sending...
+                        <PiSpinner className="w-5 animate-spin inline-block" />
+                      </div>
+                    ) : (
+                      "Send"
+                    )}
+                  </button>
       </form>
     </div>
   );

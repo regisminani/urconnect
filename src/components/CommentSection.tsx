@@ -7,7 +7,7 @@ const CommentSection = ({ id }: { id: string }) => {
   return (
     <div>
       {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
+      {error && !comments && <p>{error}</p>}
       {comments.map((c) => (
         <Commentary by={c.by} content={c.content} />
       ))}

@@ -20,7 +20,7 @@ const fetchUser = ()=>{
       if (decodedToken.exp !=undefined && decodedToken.exp < currentTime) {
         // Token is expired
         console.log('Token has expired');
-        logout()
+        // logout()
       }
             setUser(jwtDecode(token));
 
