@@ -19,6 +19,7 @@ import SuggestionDetail from "./components/pages/suggestions/SuggestionDetail";
 import LayoutTwo from "./components/Admin/LayoutTwo";
 import HomeAdmin from "./components/Admin/HomeAdmin";
 import AnsweredSuggestion from "./components/Admin/AnsweredSuggestion";
+import Navbar from "./components/HomePage/Navbar";
 
 function App() {
   return (
@@ -64,6 +65,7 @@ function App() {
           
         </Routes>
       </BrowserRouter>
+      <Navbar/>
       <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
