@@ -31,14 +31,12 @@ function App() {
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="suggestion" element={<Suggestion />} />
-            <Route path="login" element={<LoginPage />} />
+            <Route path="login" element={<LoginPageAdmin />} />
 
-            <Route path="signup" element={<SignUp />} />
             <Route path="forgotPassword" element={<ForgotPassword />} />
 
 
             <Route path="registeradmin" element={<RegisterPageAdmin />} />
-            <Route path="loginadmin" element={<LoginPageAdmin />} />
             <Route path="choice" element={<ChoicePage />} />
 
           </Route>

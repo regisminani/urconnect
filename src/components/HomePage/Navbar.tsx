@@ -32,9 +32,9 @@ const Navbar: React.FC = () => {
           </a>
           <a href="#suggestion" className="block md:inline text-gray-700 hover:text-[#006991] px-4 py-2">
             Suggestions
+            </a>
 
-            Sign Up/Login
-          </Link>
+        
         </nav>
       </div>
     </header>

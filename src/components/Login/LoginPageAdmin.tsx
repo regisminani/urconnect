@@ -50,7 +50,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="ml-[460px] w-[400px] h-auto bg-white shadow-2xl shadow-[#006991] mt-25 mb-30 flex flex-col items-center font-sans" style={{ borderRadius: "15px" }}>
+    <div className="ml-[460px] w-[400px] h-auto bg-white shadow-2xl shadow-[#006991] mt-35 flex flex-col items-center font-inter" style={{ borderRadius: "15px" }}>
       <div className="relative top-[-45px] h-25 w-25 bg-[#006991]" style={{ borderRadius: "50%" }}>
         <img src="/public/th.jpg" alt="Logo" style={{ borderRadius: "50%" }} />
       </div>
@@ -65,7 +65,7 @@ const LoginPage = () => {
           <input
             type="text"
             placeholder="Email"
-            className="rounded-lg focus-visible:outline-0 bg-gray-200 p-2 w-full text-xl pl-10" // pl-10 creates space for icon
+          className="rounded-lg focus-visible:outline-0 bg-gray-200 p-2 w-full text-lg pl-10 text-[#000] placeholder-gray-400" // pl-10 creates space for icon
             value={email}
             onChange={handleEmailChange}
           />
@@ -77,7 +77,7 @@ const LoginPage = () => {
           <input
             type={showPassword ? "text" : "password"}
             placeholder="*********"
-            className="rounded-lg focus-visible:outline-0 bg-gray-200 p-2 w-full text-xl pl-10 pr-10" // pl-10 for left icon, pr-10 for right icon
+            className="rounded-lg focus-visible:outline-0 bg-gray-200 p-2 w-full text-sm pl-10 pr-10" // pl-10 for left icon, pr-10 for right icon
             value={password}
             onChange={handlePasswordChange}
           />
