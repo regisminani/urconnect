@@ -1,65 +1,63 @@
+import { HiOutlineChat } from "react-icons/hi";
 import { IoArrowUpCircleOutline } from "react-icons/io5";
-import { FaRegCommentDots } from "react-icons/fa";
+import UserIcon from "../UserIcon";
 
-const Suggestion: React.FC = () => {
+const Suggestion = () => {
   return (
-    <div className="w-full max-w-[90%] mx-auto mt-20 my-6 border border-gray-300 rounded-lg p-6 bg-gray-100">
-      {/* Heading indicating it's a sample suggestion */}
-      <h2 className="text-xl font-bold text-sky-800 mb-4">
-        Sample Suggestion from a Student
-      </h2>
-
-      <div className="flex text-sm text-gray-500 mb-4  dark:text-gray-200">
-        <div className="size-10 rounded-full bg-sky-800">
-          <p className="text-white mt-2 text-center">M</p>
-        </div>
-        <div className="flex flex-col mx-4">
-          <span className="font-bold text-blue-900">2220***23</span>
-          <span className="text-blue-900">@mmindi</span>
+    <div className="bg-[#F7F7F7] shadow-md shadow-black/25 rounded-xl p-2 pl-4 pr-4">
+      <div className="flex gap-1">
+        <UserIcon v />
+        <div className="text-sm">
+          <p className="font-semibold">2220***23</p>
+          <p className="font-medium text-[#9C9C9C]  -mt-[5px]">@mrndi</p>
         </div>
       </div>
+      <p className="text-sm  mt-5">
+        I am writing to request an increase in the monthly living allowance for
+        students at the University of Rwanda from RWF 40,000 to RWF 100,000. The
+        current allowance has not kept pace with the rising costs of living,
+        including significant increases in food and accommodation prices, which
+        have made it increasingly difficult for students to meet their basic
+        needs. Many students are struggling to afford essentials, which
+        negatively impacts their academic performance and overall well-being. An
+        adjustment to RWF 100,000 would provide much-needed financial support,
+        allowing students to focus on their studies without the burden of
+        financial stress. Thank you for considering this important request.
+      </p>
 
-      <div className="text-base text-gray-900 text-md font-light   leading-relaxed mb-6">
-        <p>
-          I am writing to request an increase in the monthly living allowance
-          for students at the University of Rwanda from RWF 40,000 to RWF
-          100,000. The current allowance has not kept pace with the rising costs
-          of living, including significant increases in food and accommodation
-          prices, which have made it increasingly difficult for students to meet
-          their basic needs. Many students are struggling to afford essentials,
-          which negatively impacts their academic performance and overall
-          well-being. An adjustment to RWF 100,000 would provide much-needed
-          financial support, allowing students to focus on their studies without
-          the burden of financial stress. Thank you for considering this
-          important request.
+      <div className="mt-3 flex items-center gap-12">
+        <p className="text-sm font-[300] text-neutral-400 ml-1">
+          11:30PM • 14/11/2024 •{" "}
+          <span className="font-bold text-black">120</span> Views
+        </p>
+        {/* Tags */}
+        <div className="sm:flex gap-3 space-y-2 sm:space-y-0">
+          <div className="bg-neutral-300 w-fit p-1 pl-7 pr-7 rounded-full">
+            <p className="text-neutral-500 font-[500] text-xs">Principal</p>
+          </div>
+          <div className="bg-neutral-300 w-fit p-1 pl-7 pr-7 rounded-full">
+            <p className="text-neutral-500 font-[500] text-xs">Dean</p>
+          </div>
+        </div>
+      </div>
+      <hr className="mt-2 text-neutral-300" />
+      <div className="flex items-center gap-2 mt-2">
+        <p className="text-sm font-[300] text-neutral-400 ml-1">
+          <span className="font-bold text-black">98</span> Upvotes
+        </p>
+        <p className="text-sm font-[300] text-neutral-400 ml-1">
+          <span className="font-bold text-black">61</span> Comments
         </p>
       </div>
-
-      <div className="flex gap-4 text-sm text-gray-500 mb-4">
-        <span>11:30 PM · 14/11/2024</span>
-        <span>· 120 Views</span>
-        <span className="bg-gray-300 mb-2 rounded-full px-8 py-0.5">dean</span>
-        <span className="bg-gray-300 mb-2 rounded-full px-8 py-0.5">
-          principal
-        </span>
-      </div>
-
-      <hr />
-
-      <div className="flex gap-4 my-2 text-sm text-gray-600">
-        <span className="hover:text-black gap-2 font-semibold cursor-pointer">
-          98 <span className="font-light">Upvotes</span>
-        </span>
-        <span className="hover:text-black gap-2 font-semibold cursor-pointer">
-          61 <span className="font-light">Comments</span>
-        </span>
-      </div>
-
-      <hr />
-
-      <div className="flex gap-20 my-2 text-sm text-gray-600">
-        <IoArrowUpCircleOutline className="text-2xl cursor-pointer" />
-        <FaRegCommentDots className="text-2xl cursor-pointer" />
+      <hr className="mt-2 text-neutral-300" />
+      {/* Upvote/Comment */}
+      <div className="flex items-center ml-5 mt-2 mb-1 gap-20">
+        <button type="button">
+          <IoArrowUpCircleOutline className="w-7 h-7 text-neutral-500  active:scale-95 cursor-pointer" />
+        </button>
+        <button>
+          <HiOutlineChat className="w-7 h-7 text-neutral-500 stroke-[1.5px] active:scale-95 cursor-pointer" />
+        </button>
       </div>
     </div>
   );

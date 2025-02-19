@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { IoArrowUpCircleOutline } from "react-icons/io5";
-
 import { HiOutlineChat } from "react-icons/hi";
-
 import UserIcon from "../UserIcon.tsx";
-
+import Footer from "./Footer.tsx";
 const Home: React.FC = () => {
   const [animationClass, setAnimationClass] = useState<string>("opacity-0");
 
@@ -178,24 +176,8 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      {/* Floating Suggestion Icons */}
-      <div className="absolute top-80 left-10 animate-move">
-        <svg
-          className="w-12 h-12  shadow-blue-500/30 hover:text-blue-700 transition-all duration-300 ease-in-out transform"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M11 3h2a2 2 0 012 2v16a2 2 0 01-2 2h-2a2 2 0 01-2-2V5a2 2 0 012-2z"
-          />
-        </svg>
-      </div>
-      
+    
+      <Footer/>
     </div>
   );
 };

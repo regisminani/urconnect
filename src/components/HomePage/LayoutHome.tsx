@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./Navbar";
-import Footer from "./Footer";
+
 
 const LayoutHome= () => {
   return (
@@ -9,7 +9,7 @@ const LayoutHome= () => {
       <div className="flex-grow">
         <Outlet /> {/* This will render the child components dynamically */}
       </div>
-      <Footer />
+      
     </div>
   );
 };
