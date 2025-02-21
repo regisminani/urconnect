@@ -1,11 +1,11 @@
 import { Outlet } from 'react-router-dom';
-import NavbarAdmin from '../Admin/NavbarAdmin';
+import NavbarMainAdmin from './NavbarMainAdmin';
 import { MdKeyboardArrowUp } from 'react-icons/md';
 import { useState, useEffect } from 'react';
 
 
 
-const LayoutTwo = () => {
+const LayoutThree = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const toggleVisibility = () => {
@@ -30,7 +30,7 @@ const LayoutTwo = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <NavbarAdmin/>
+      <NavbarMainAdmin/>
       <main className="flex-grow">
         <Outlet />
       </main>
@@ -48,4 +48,4 @@ const LayoutTwo = () => {
   );
 };
 
-export default LayoutTwo;
+export default LayoutThree;
