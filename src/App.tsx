@@ -21,6 +21,10 @@ import LayoutTwo from "./components/Admin/LayoutTwo";
 import HomeAdmin from "./components/Admin/HomeAdmin";
 import AnsweredSuggestion from "./components/Admin/AnsweredSuggestion";
 
+
+import LayoutThree from "./components/MainAdmin.tsx/LayoutThree";
+import HomeMainAdmin from "./components/MainAdmin.tsx/HomeMainAdmin";
+
 function App() {
   return (
     <div className="font-inter">
@@ -41,6 +45,11 @@ function App() {
           <Route path="/admin" element={<LayoutTwo />}>
             <Route index element={<HomeAdmin />} />
             <Route path="answered" element={<AnsweredSuggestion />} />
+          
+          </Route>
+          <Route path="/mainadmin" element={<LayoutThree />}>
+            <Route index element={<HomeMainAdmin />} />
+            
           
           </Route>
 

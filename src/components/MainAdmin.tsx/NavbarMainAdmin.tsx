@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
-const NavbarAdmin = () => {
+
+const NavbarMainAdmin = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  // Retrieve username from localStorage
   const username = localStorage.getItem("username");
   const firstLetter = username ? username.charAt(0).toUpperCase() : "U"; // Default to 'U' if no username found
 
@@ -20,46 +18,14 @@ const NavbarAdmin = () => {
   return (
     <>
       <header className="bg-white">
-        <div className="w-full fixed top-0 bg-white z-30 backdrop-blur-md shadow-md">
+        <div className="w-full fixed top-0  z-30 backdrop-blur-md shadow-md">
           <div className="flex h-16 items-center justify-between px-4 md:px-12">
             <div className="flex-1 flex items-center gap-4">
               <div className="flex items-center space-x-2">
                 <img src="/logo.svg" alt="logo" className="w-12" />
-                <Link to="/">
                 <h1 className="text-2xl font-bold text-[#006991]">UR-Connect</h1>
-                </Link>
               </div>
             </div>
-
-            {/* Sub Navigation Tabs */}
-            <ul className="hidden md:flex justify-center mt-6 mb-4">
-              <li>
-                <NavLink
-                  to="/admin"
-                  className={({ isActive }) =>
-                    `text-sm mr-4 pb-2 border-b-2 transition-all duration-200 ${
-                      isActive ? "border-[#006991] text-[#006991]" : "border-white hover:text-[#006991] hover:border-[#006991]"
-                    }`
-                  }
-                >
-                  New Suggestion
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="answered"
-                  className={({ isActive }) =>
-                    `text-sm mr-4 pb-2 border-b-2 transition-all duration-200 ease-in-out ${
-                      isActive ? "border-[#006991] text-[#006991]" : "border-white hover:text-[#006991] hover:border-[#006991]"
-                    }`
-                  }
-                >
-                  Answered Suggestion
-                </NavLink>
-              </li>
-            </ul>
-
-            {/* Profile Menu */}
             <div className="flex md:flex md:items-center md:gap-12 relative">
               <div className="hidden md:relative md:block">
                 <button
@@ -160,4 +126,4 @@ const NavbarAdmin = () => {
   );
 };
 
-export default NavbarAdmin;
+export default NavbarMainAdmin;
