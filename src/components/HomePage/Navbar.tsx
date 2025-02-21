@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react"; // Icons for better UI
 
 const Navbar: React.FC = () => {
@@ -33,6 +32,7 @@ const Navbar: React.FC = () => {
           </a>
           <a href="#suggestion" className="block md:inline text-gray-700 hover:text-[#006991] px-4 py-2">
             Suggestions
+
           </a>
           <Link
   to="/loginadmin"
@@ -40,6 +40,9 @@ const Navbar: React.FC = () => {
 >
   Sign Up/Login
 </Link>
+
+
+            </a>
 
         </nav>
       </div>
