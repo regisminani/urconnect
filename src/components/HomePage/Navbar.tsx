@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react"; // Icons for better UI
+import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -24,22 +25,32 @@ const Navbar: React.FC = () => {
             isOpen ? "block" : "hidden"
           }`}
         >
-          <a href="/" className="block md:inline text-gray-700 hover:text-[#006991] px-4 py-2">
+          <a
+            href="/"
+            className="block md:inline text-gray-700 hover:text-[#006991] px-4 py-2"
+          >
             Home
           </a>
-          <a href="#about" className="block md:inline text-gray-700 hover:text-[#006991] px-4 py-2">
+          <a
+            href="#about"
+            className="block md:inline text-gray-700 hover:text-[#006991] px-4 py-2"
+          >
             About
           </a>
-          <a href="#suggestion" className="block md:inline text-gray-700 hover:text-[#006991] px-4 py-2">
+          <a
+            href="#suggestion"
+            className="block md:inline text-gray-700 hover:text-[#006991] px-4 py-2"
+          >
             Suggestions
-
           </a>
+
           <a
   href="/login"
   className="block md:inline text-[#006991] bg-transparent border border-[#006991] rounded-md px-4 py-2 transition duration-300 hover:bg-[#006991] hover:text-white"
 >
   Sign Up/Login
 </a>
+
         </nav>
       </div>
     </header>

@@ -24,6 +24,8 @@ import AnsweredSuggestion from "./components/Admin/AnsweredSuggestion";
 
 import LayoutThree from "./components/MainAdmin.tsx/LayoutThree";
 import HomeMainAdmin from "./components/MainAdmin.tsx/HomeMainAdmin";
+import LoginPage from "./components/Login/LoginPage";
+import MySuggestions from "./components/MySuggestions";
 
 function App() {
   return (
@@ -35,7 +37,11 @@ function App() {
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="suggestion" element={<Suggestion />} />
+
+            
             <Route path="login" element={<LoginPageAdmin />} />
+
+        
             <Route path="signup" element={<SignUp />} />
             <Route path="forgotPassword" element={<ForgotPassword />} />
        </Route>
@@ -45,20 +51,32 @@ function App() {
             <Route index element={<HomeAdmin />} />
             <Route path="answered" element={<AnsweredSuggestion />} />
           </Route>
+          
           <Route path="/mainadmin" element={<LayoutThree />}>
             <Route index element={<HomeMainAdmin />} />
           </Route>
 
           {/* Routes for the suggestions layout */}
+          <Route path="/suggestions" >
           <Route path="/suggestions" element={<LayoutS />}>
             <Route index element={<Queue />} />
             <Route path="queue">
             <Route path=":suggestionID" element={<SuggestionDetail />} />
             </Route>
-            <Route path="pending" element={<Pending />} />
-            <Route path="resolved" element={<Resolved />} />
+            <Route path="pending" element={<Pending />} >
+            <Route path=":suggestionID" element={<SuggestionDetail />} />
+            </Route>
+            <Route path="resolved" element={<Resolved />} >
+            <Route path=":suggestionID" element={<SuggestionDetail />} />
+            </Route>
           </Route>
-
+            <Route path="my-suggestions" element={<Layout>
+              
+              <MySuggestions />
+              </Layout>
+              
+              } />
+          </Route>
 
           {/* Messages */}
           <Route path="/messages" element={<Layout />}/>
@@ -69,8 +87,8 @@ function App() {
           <Route path="*" element={<NotFound />} />
           
         </Routes>
+      {/* <Navbar/> */}
       </BrowserRouter>
-    
       <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );

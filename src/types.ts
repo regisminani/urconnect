@@ -13,7 +13,7 @@ export interface Student {
   }
   
   export interface StudentLogin {
-    regNo: string;
+    email: string;
     password: string;
   }
   export interface LoginResponse {
@@ -26,6 +26,8 @@ export interface Student {
           by: {
             regNo: string,
             username: string;
+            firstName: string;
+            otherName: string;
           },    
           content: string,
           votes: number,
@@ -53,7 +55,9 @@ export const defaultSuggestion: Suggestion = {
     tags: [],
     by: {
         regNo: "",
-        username: ""
+        username: "",
+        firstName: '',
+        otherName: '',
     },
     votes: 0,
     views: 0,
@@ -67,8 +71,10 @@ export const defaultSuggestion: Suggestion = {
   
   export interface CommentShape {
     by: {
-        regNo: string,
+        regNo: string;
         username: string;
+        firstName: string;
+        otherName: string;
       },    
       content: string,
   }
@@ -79,13 +85,19 @@ export const defaultSuggestion: Suggestion = {
 export interface LoggedInUser {
     id: string;
     regNo: string;
+    firstName: string;
+    otherName: string;
     username: string;
+    email: string;
 }
 
 export const defaultUser: LoggedInUser = {
     id: "",
     regNo: "",
+    firstName: '',
+    otherName: '',
     username:"",
+    email: "",
 }
 
 export interface Vote {

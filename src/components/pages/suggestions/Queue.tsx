@@ -1,18 +1,20 @@
 import fetchUser from "../../../hooks/fetchUser";
 import useSuggestions from "../../../hooks/useSuggestions";
 import Suggestion from "../../Suggestion";
-import SuggestionAlt from "../../SuggestionAlt";
 import SuggestionInput from "../../SuggestionInput";
 
 const Queue = () => {
   let { loading, error, suggestions } = useSuggestions("queue");
-  const {user} = fetchUser()
+  const { user } = fetchUser();
   console.log(suggestions);
   return (
     <div className="space-y-5">
-      <SuggestionInput username={user.username}/>
+      <SuggestionInput username={user.email} />
       {error && <p>{error}</p>}
-      {loading && <p>Loading...</p>}
+      {loading && Array(5).fill('').map((_)=>
+      <div className="bg-neutral-200 animate-pulse rounded-xl w-full h-44"/>
+      )
+      }
       {suggestions.map((s) => (
         <Suggestion
           key={s._id}
@@ -29,7 +31,8 @@ const Queue = () => {
           createdAt={s.createdAt}
         />
       ))}
-      <SuggestionAlt />
+
+      {/* <SuggestionAlt /> */}
     </div>
   );
 };

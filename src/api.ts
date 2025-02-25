@@ -14,7 +14,7 @@ import { CommentContent, CommentShape, StudentLogin, Suggestion, SuggestionConte
   });
   
 
-export const loginStudent = (credentials: StudentLogin) => API.post("/api/student/login", credentials);
+export const loginUser = (credentials: StudentLogin) => API.post("/api/user/login", credentials);
 /* export const loginStudent = (credentials: StudentLogin) =>{
   const controller = new AbortController();
   const request = API.post<LoginResponse>("/api/student/login", credentials);

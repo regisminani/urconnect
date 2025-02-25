@@ -31,7 +31,7 @@ const SuggestionDetail = () => {
     <div
       className="bg-black/50 fixed inset-0 z-20"
     >
-      <div className="bg-white fixed inset-0 sm:ml-32 transition delay-150 duration-300 ease-in-out md:ml-60">
+      <div className="bg-white overflow-scroll fixed inset-0 sm:ml-32  transition delay-150 duration-300 ease-in-out md:ml-60">
         <div className="p-5">
           <HiArrowSmallLeft
             size={26}
@@ -39,14 +39,14 @@ const SuggestionDetail = () => {
             onClick={() => navigate("/suggestions")}
           />
           {_id !== "" && createdAt  ? (
-            <div className="mt-5 ml-10">
+            <div className="mt-5 ml-10 mr-10">
               <div className="flex gap-1">
                 <UserIcon username={by?.username} />
 
                 <div className="text-sm">
-                  <p className="font-semibold">{`${by?.regNo.slice(0, 3)}***${by?.regNo.slice(6)}`}</p>
+                  <p className="font-semibold">{by.firstName + by.otherName}</p>
                   <p className="font-medium text-[#9C9C9C]  -mt-[5px]">
-                    @{by?.username}
+                    @{by.firstName}
                   </p>
                 </div>
               </div>

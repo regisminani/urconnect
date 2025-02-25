@@ -2,15 +2,26 @@ import { HiOutlineChat } from "react-icons/hi";
 import { IoArrowUpCircleOutline } from "react-icons/io5";
 import UserIcon from "./UserIcon";
 
-const SuggestionAlt = () => {
+interface Props {
+  ms?:boolean;
+}
+
+const SuggestionAlt = ({ms}:Props) => {
   return (
     <div className="bg-[#F7F7F7] shadow-md shadow-black/25 rounded-xl p-2 pl-4 pr-4">
-      <div className="flex gap-1">
+      <div className="flex justify-between">
+
+      <div className="flex gap-1 ">
         <UserIcon v />
         <div className="text-sm">
           <p className="font-semibold">2220***23</p>
           <p className="font-medium text-[#9C9C9C]  -mt-[5px]">@mrndi</p>
         </div>
+      </div>
+      {
+        ms &&
+        <div className="border border-red-500 w-fit h-fit text-xs p-1 pl-4 pr-4 rounded-sm text-gray-500">Expired</div>
+      }
       </div>
       <p className="text-sm  mt-5">
         I am writing to request an increase in the monthly living allowance for
@@ -51,13 +62,21 @@ const SuggestionAlt = () => {
       </div>
       <hr className="mt-2 text-neutral-300" />
       {/* Upvote/Comment */}
-      <div className="flex items-center ml-5 mt-2 mb-1 gap-20">
+      <div className="ml-5 mt-2 mb-1 flex justify-between">
+
+      <div className="flex items-center  gap-20">
         <button type="button">
           <IoArrowUpCircleOutline className="w-7 h-7 text-neutral-500  active:scale-95 cursor-pointer" />
         </button>
         <button>
           <HiOutlineChat className="w-7 h-7 text-neutral-500 stroke-[1.5px] active:scale-95 cursor-pointer" />
         </button>
+      </div>
+      {
+        ms &&
+      <button type="button" className="bg-[#00628B] cursor-pointer w-fit h-fit text-xs p-1 pl-4 pr-4 rounded-sm text-white active:scale-95">Repost</button>
+      }
+
       </div>
     </div>
   );
