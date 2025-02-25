@@ -19,7 +19,7 @@ import SuggestionDetail from "./components/pages/suggestions/SuggestionDetail";
 import LayoutTwo from "./components/Admin/LayoutTwo";
 import HomeAdmin from "./components/Admin/HomeAdmin";
 import AnsweredSuggestion from "./components/Admin/AnsweredSuggestion";
-import Navbar from "./components/HomePage/Navbar";
+
 
 
 import LayoutThree from "./components/MainAdmin.tsx/LayoutThree";
@@ -33,27 +33,27 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* Routes for the main layout */}
-          <Route path="/" element={<LayoutHome />}/>
+          <Route path="/" element={<LayoutHome />}>
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="suggestion" element={<Suggestion />} />
 
-            <Route path="login" element={<LoginPage />} />
             
-            <Route path="signup" element={<SignUp />} />
+            <Route path="login" element={<LoginPageAdmin />} />
 
+        
+            <Route path="signup" element={<SignUp />} />
             <Route path="forgotPassword" element={<ForgotPassword />} />
-            
+       </Route>
+
+
           <Route path="/admin" element={<LayoutTwo />}>
             <Route index element={<HomeAdmin />} />
             <Route path="answered" element={<AnsweredSuggestion />} />
-          
           </Route>
           
           <Route path="/mainadmin" element={<LayoutThree />}>
             <Route index element={<HomeMainAdmin />} />
-            
-          
           </Route>
 
           {/* Routes for the suggestions layout */}

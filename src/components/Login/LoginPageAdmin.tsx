@@ -105,20 +105,19 @@ const LoginPage = () => {
         </label>
 
         <label htmlFor="password" className="relative w-[300px] mt-5">
-          <input
-            type={showPassword ? "text" : "password"}
-            placeholder="*********"
+  <input
+    type={showPassword ? "text" : "password"}
+    placeholder="*********"
+    className="rounded-lg focus-visible:outline-0 bg-gray-200 p-2 w-full text-sm pl-10 pr-10" 
+    value={password}
+    onChange={handlePasswordChange}
+  />
+  <i
+    className={`fa-solid ${showPassword ? "fa-eye" : "fa-eye-slash"} absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm cursor-pointer`}
+    onClick={togglePasswordVisibility}
+  />
+</label>
 
-            className="rounded-lg focus-visible:outline-0 bg-gray-200 p-2 w-full text-sm pl-10 pr-10" // pl-10 for left icon, pr-10 for right icon
-
-            value={password}
-            onChange={handlePasswordChange}
-          />
-          <i
-            className={`fa-solid ${showPassword ? "fa-eye" : "fa-eye-slash"} absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm cursor-pointer`}
-            onClick={togglePasswordVisibility}
-          />
-        </label>
 
         <button type="submit" className="bg-[#006991] rounded-lg text-xl text-center w-[300px] p-2 mb-5 text-white hover:bg-[#5c90a5] mt-5" disabled={loading}>
           {loading ? "Logging in..." : "Login"}
