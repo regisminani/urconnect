@@ -10,6 +10,7 @@ const fetchUser = ()=>{
     useEffect(() => {
         setLoading(true);
           const token = localStorage.getItem("token");
+          console.log('TOKEN', token)
           if (!token) {
             setError("User not logged in");
             return;

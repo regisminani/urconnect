@@ -1,64 +1,68 @@
 import { SetStateAction, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { loginStudent } from "../../api";
+import { loginUser } from "../../api";
 import { useNavigate } from "react-router-dom";
 import { StudentLogin } from "../../types";
 
 const LoginPage = () => {
-  const navigate = useNavigate()
-  const [regNo, setRegNo] = useState("");
-  const [pass, setPass] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
-  // Handle RegNo Change
-  const handleRegChanges = (e: {
+  const validEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  const handleEmailChange = (e: {
     target: { value: SetStateAction<string> };
   }) => {
-    setRegNo(e.target.value);
+    setEmail(e.target.value);
   };
 
-  // Handle Password Change
-  const handlePassChanges = (e: {
+  const handlePasswordChange = (e: {
     target: { value: SetStateAction<string> };
   }) => {
-    setPass(e.target.value);
+    setPassword(e.target.value);
   };
 
-  // Validate Inputs and Show Toasts
   const validateFields = () => {
-    if (regNo.length === 0 || pass.length === 0) {
-      toast.info("Please fill all the fields.");
+    if (!email) {
+      toast.info("Please fill the email field.");
       return false;
     }
-    if (regNo.length !== 9) {
-      toast.error("Reg No must be exactly 9 characters.");
+    if (!validEmail.test(email)) {
+      toast.error("Please enter a valid email address.");
       return false;
     }
-
-    if (pass.length < 8) {
+    if (!password) {
+      toast.info("Please fill the password field.");
+      return false;
+    }
+    if (password.length < 8) {
       toast.error("Password must be at least 8 characters.");
       return false;
     }
-
     return true;
   };
 
   const formData: StudentLogin = {
-    regNo: regNo,
-    password: pass,
+    email: email,
+    password: password,
   };
   console.log(formData);
   // Handle Form Submission
   const handleSubmit = async (e: { preventDefault: () => void }) => {
+    setLoading(true)
     e.preventDefault();
 
     if (validateFields()) {
       try {
-        const { data } = await loginStudent(formData);
+        const { data } = await loginUser(formData);
         localStorage.setItem("token", data.token);
         toast.success("Logged in Successfully!");
+        setLoading(false)
         navigate("/suggestions");
-        window.location.reload();
       } catch (error: any) {
         toast.error(
           "Error: " + error.response?.data?.error || "Something went wrong"
@@ -66,98 +70,65 @@ const LoginPage = () => {
       }
     }
   };
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
 
   return (
-    <div className="ml-70 mt-16 w-[700px] h-[500px] flex rounded-10xl relative shadow-2xl shadow-cyan-950 mb-10 font-inter" style={{
-      borderTopLeftRadius: "10px",
-      borderBottomLeftRadius: "10px",
-      borderBottomRightRadius:"10px",
-      borderTopRightRadius:"10px"
-    }}>
+    <div
+      className="ml-[460px] w-[400px] h-auto bg-white shadow-2xl shadow-[#006991] mt-30 mb-30 flex flex-col items-center font-sans"
+      style={{ borderRadius: "15px" }}
+    >
       <div
-        className="w-1/2 flex flex-col items-center font-inter justify-center border-0"
-        style={{
-          borderTopLeftRadius: "10px",
-          borderBottomLeftRadius: "10px",
-        }}
+        className="relative top-[-45px] h-25 w-25 bg-[#006991]"
+        style={{ borderRadius: "50%" }}
       >
-        <div
-          style={{ color: "#006991" }}
-          className="text-5xl mt-10 text-center"
-        >
-          UR Connect
-        </div>
-        <div className="h-72 w-72">
-          <img
-            src="/public/ur.jpg"
-            alt="Ur-logo"
-            className="w-full h-full object-contain mt-8"
-          />
-        </div>
+        <img src="/public/th.jpg" alt="Logo" style={{ borderRadius: "50%" }} />
       </div>
 
-      <form
-        style={{
-          backgroundColor: "#006991",
-          borderTopRightRadius: "10px",
-          borderBottomRightRadius: "10px",
-        }}
-        className="w-1/2 relative p-6 flex flex-col items-center"
-        onSubmit={handleSubmit}
+      <div
+        className="items-center text-3xl mt-0 mb-3"
+        style={{ color: "#006991" }}
       >
-        {/* Close Button */}
-        {/* <button
-          type="button"
-          onClick={handleClose}
-          className="text-white absolute right-4 top-4 bg-red-500 px-6 py-1 text-sm hover:bg-red-600 rounded-md"
-        >
-          X
-        </button> */}
+        Login Page
+      </div>
 
-        <div className="text-white text-5xl mt-20 font-inter">Student Page</div>
-        <div className="text-white text-3xl mt-7 font-inter">Sign in</div>
-
-        {/* Reg No Input */}
-        <label className="font-inter">
+      <form onSubmit={handleSubmit} className="m-3 flex flex-col">
+        <label htmlFor="email" className="relative w-[300px]">
           <input
-            className="focus-visible:outline-0 w-full px-13 mt-7 text-gray-700 rounded-lg p-2 bg-white"
             type="text"
-            placeholder="Reg No"
-            value={regNo}
-            onChange={handleRegChanges}
+            placeholder="Email"
+            className="rounded-lg focus-visible:outline-0 bg-gray-200 p-2 w-full text-lg pl-10 text-[#000] placeholder-gray-400" // pl-10 creates space for icon
+            value={email}
+            onChange={handleEmailChange}
           />
         </label>
 
-        {/* Password Input */}
-        <label>
+        <label htmlFor="password" className="relative w-[300px] mt-5">
           <input
-            className="w-full px-13 text-start mt-7 focus-visible:outline-0 text-gray-700 p-2 bg-white"
-            type="password"
-            placeholder="Password"
-            value={pass}
-            onChange={handlePassChanges}
+            type={showPassword ? "text" : "password"}
+            placeholder="*********"
+            className="rounded-lg focus-visible:outline-0 bg-gray-200 p-2 w-full text-sm pl-10 pr-10" // pl-10 for left icon, pr-10 for right icon
+            value={password}
+            onChange={handlePasswordChange}
+          />
+          <i
+            className={`fa-solid ${
+              showPassword ? "fa-eye" : "fa-eye-slash"
+            } absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 text-sm cursor-pointer`}
+            onClick={togglePasswordVisibility}
           />
         </label>
 
         <button
           type="submit"
-          className="w-full mt-7 py-2 bg-transparent border border-white text-white rounded-lg hover:bg-white/20 transition duration-300"
+          className="bg-[#006991] rounded-lg text-xl text-center w-[300px] p-2 mb-5 text-white hover:bg-[#5c90a5] mt-5"
+          disabled={loading}
         >
-          Login
+          {loading ? "Logging in..." : "Login"}
         </button>
-
-        {/* Links */}
-        <div className="flex justify-between w-full text-sm mt-2">
-          <a href="/forgotPassword" className="text-white font-inter hover:underline mt-3">
-            Forgot Password?
-          </a>
-          <a href="/signup" className="text-white font-inter hover:underline mt-3">
-            Sign up
-          </a>
-        </div>
       </form>
 
-      {/* Toast Container (Required for Displaying Toasts) */}
       <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );

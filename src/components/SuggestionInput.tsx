@@ -10,7 +10,6 @@ import { IoIosClose } from "react-icons/io";
 import { SuggestionContent } from "../types";
 import useRoles from "../hooks/useRoles";
 
-
 const schema = z.object({
   content: z
     .string()
@@ -20,7 +19,7 @@ const schema = z.object({
 
 type FormData = z.infer<typeof schema>;
 
-const SuggestionInput = ({username}:{username:String}) => {
+const SuggestionInput = ({ username }: { username: String }) => {
   const [message, setMessage] = useState("");
   const [isLoading, setLoading] = useState(false);
   const {
@@ -30,7 +29,7 @@ const SuggestionInput = ({username}:{username:String}) => {
   } = useForm<FormData>({ resolver: zodResolver(schema) });
 
   const onSubmit = (formData: SuggestionContent) => {
-    setMessage('')
+    setMessage("");
     setLoading(true);
     formData.tags = tagChoice;
     const { request, cancel } = postSuggestion(formData);
@@ -46,8 +45,9 @@ const SuggestionInput = ({username}:{username:String}) => {
       });
     return () => cancel();
   };
-  const {roles, loading, error} = useRoles()
-  const tagOptions = (!error && !loading && roles) ? roles : ["Principal", "Dean", "HOD"];
+  const { roles, loading, error } = useRoles();
+  const tagOptions =
+    !error && !loading && roles ? roles : ["Principal", "Dean", "HOD"];
   const [tagChoice, setTagChoice] = useState<string[]>([]);
   const [tagSearch, setTagSearch] = useState("");
 
@@ -66,7 +66,7 @@ const SuggestionInput = ({username}:{username:String}) => {
         </p>
       </div>
       <div className="bg-white p-1 rounded-full flex items-center gap-2 mt-2">
-        <UserIcon username={username}/>
+        <UserIcon username={username} />
         <input
           {...register("content")}
           type="text"

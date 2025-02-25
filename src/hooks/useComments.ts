@@ -5,7 +5,7 @@ import { CommentShape } from "../types";
 
 const useComments = (commentQuery?:string) => {
   const socket = io("https://ur-connect.onrender.com/suggestions");
-  socket.emit("postComments", commentQuery);
+  socket.emit("onComment", commentQuery);
     const [comments, setComments] = useState<CommentShape[]>([]);
       const [error, setError] = useState("");
       const [loading, setLoading] = useState(false);
@@ -13,7 +13,7 @@ const useComments = (commentQuery?:string) => {
   useEffect(() => {
  
     setLoading(true);
-    socket.on("postComments", function (msg: CommentShape[]) {
+    socket.on("onComment", function (msg: CommentShape[]) {
       setComments(msg)
       if(msg.length===0) setError("No Comments")
         setLoading(false)

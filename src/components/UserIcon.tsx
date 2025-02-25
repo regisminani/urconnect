@@ -2,14 +2,15 @@ import { CiUser } from "react-icons/ci";
 interface Props {
   username?: String;
   v?: Boolean;
+  size?: Number;
 }
-const UserIcon = ({ username }: Props) => {
+const UserIcon = ({ username, size=5 }: Props) => {
   return (
     <div>
 
     <div
       className={`flex justify-center items-center bg-[#2FA0C6] 
-        w-5 h-5 p-4 text-center  rounded-full font-bold text-white`}
+        w-${size} h-${size} p-4 text-center  rounded-full font-bold text-white`}
     >
       <p className="">{username? username?.charAt(0).toLocaleUpperCase(): <CiUser />}</p>
     </div>

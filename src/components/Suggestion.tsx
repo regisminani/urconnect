@@ -9,7 +9,7 @@ import { useInView } from 'react-intersection-observer';
 import { useEffect, useState } from "react";
 import { CanceledError } from "axios";
 
-const Suggestion = ({_id,by,status ,comments, content, tags,views, votes, createdAt}:S) => {
+const  Suggestion = ({_id,by,status ,comments, content, tags,views, votes, createdAt}:S) => {
 const [loading, setLoading] = useState(false)
 const [message, setMessage] = useState('')
 const {formattedDate, formattedTime} = formatDate(createdAt)
@@ -52,14 +52,14 @@ const handleView = () => {
 useEffect(()=>{
   inView && handleView()
 }, [inView])
-
+console.log("BY:", by)
   return (
     <div ref={ref} className="bg-[#F7F7F7] shadow-md shadow-black/25 rounded-xl p-2 pl-4 pr-4">
       <div className="flex gap-1">
-        <UserIcon username={by.username} />
+        <UserIcon username={by.firstName} />
         <div className="text-sm">
-          <p className="font-semibold">{`${by.regNo.slice(0, 3)}***${by.regNo.slice(6)}`}</p>
-          <p className="font-medium text-[#9C9C9C]  -mt-[5px]">@{by.username}</p>
+          <p className="font-semibold">{by.firstName+by.otherName}</p>
+          <p className="font-medium text-[#9C9C9C]  -mt-[5px]">@{by.firstName}</p>
         </div>
       </div>
       <Link to={`/suggestions/${status}/${_id}`}  className="text-sm  mt-5">
