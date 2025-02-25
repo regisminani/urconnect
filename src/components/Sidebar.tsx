@@ -15,7 +15,7 @@ const Sidebar = () => {
     { link: "/go Live", icon: CiStreamOn },
   ];
   return (
-    <div className="fixed sm:relative right-0 bottom-0 w-full sm:w-fit md:w-44 md:mt-11">
+    <div className="fixed sm:relative z-20 right-0 bottom-0 w-full sm:w-fit md:w-44 md:mt-11">
       <div className="hidden ">
 
         <Logo/>

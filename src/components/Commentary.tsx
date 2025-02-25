@@ -10,9 +10,9 @@ const Commentary = ({by, content}:CommentShape) => {
                 <UserIcon username={by?.username} />
 
                 <div className="text-sm">
-                  <p className="font-semibold">{`${by?.regNo.slice(0, 3)}***${by?.regNo.slice(6)}`}</p>
+                  <p className="font-semibold">{by.firstName+by.otherName}</p>
                   <p className="font-medium text-[#9C9C9C]  -mt-[5px]">
-                    @{by?.username}
+                    @{by?.firstName}
                   </p>
                 </div>
               </div>

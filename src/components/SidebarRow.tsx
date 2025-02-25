@@ -14,7 +14,7 @@ const SidebarRow = ({ link, Icon }: Props) => {
     <Link
       to={link}
       className={`flex items-center p-3 gap-2 rounded-xl text-[#075985] ${
-        path === link && "bg-[#E0F2FE]"
+        path.includes(link) && "bg-[#E0F2FE]"
       } hover:bg-[#E0F2FE] sm:mb-2`}
     >
       <Icon size={25} />

@@ -109,7 +109,7 @@ const LoginPage = () => {
             type={showPassword ? "text" : "password"}
             placeholder="*********"
 
-=======            className="rounded-lg focus-visible:outline-0 bg-gray-200 p-2 w-full text-sm pl-10 pr-10" // pl-10 for left icon, pr-10 for right icon
+            className="rounded-lg focus-visible:outline-0 bg-gray-200 p-2 w-full text-sm pl-10 pr-10" // pl-10 for left icon, pr-10 for right icon
 
             value={password}
             onChange={handlePasswordChange}
