@@ -12,7 +12,6 @@ import Suggestion from "./components/HomePage/Suggestion"; // Make sure you impo
 import SignUp from "./components/SignUp/SignUp";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 
-import LoginPageAdmin from "./components/Login/LoginPageAdmin";
 import { ToastContainer } from "react-toastify";
 import SuggestionDetail from "./components/pages/suggestions/SuggestionDetail";
 
