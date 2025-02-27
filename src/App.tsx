@@ -21,10 +21,8 @@ import HomeAdmin from "./components/Admin/HomeAdmin";
 import AnsweredSuggestion from "./components/Admin/AnsweredSuggestion";
 
 
-
 import LayoutThree from "./components/MainAdmin.tsx/LayoutThree";
 import HomeMainAdmin from "./components/MainAdmin.tsx/HomeMainAdmin";
-import LoginPage from "./components/Login/LoginPage";
 import MySuggestions from "./components/MySuggestions";
 
 function App() {
@@ -87,7 +85,6 @@ function App() {
           <Route path="*" element={<NotFound />} />
           
         </Routes>
-      {/* <Navbar/> */}
       </BrowserRouter>
       <ToastContainer position="top-right" autoClose={3000} />
     </div>

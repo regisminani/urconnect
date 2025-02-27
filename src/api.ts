@@ -25,6 +25,11 @@ export const getSuggestions = (status?: string) => {
     const request = API.get<Suggestion[]>(`/api/suggestions/${status}`, { signal: controller.signal });
     return { request, cancel: () => controller.abort() };
   };
+export const getMySuggestions = (status?: string) => {
+    const controller = new AbortController();
+    const request = API.get<Suggestion[]>(`/api/suggestions/${status}`, { signal: controller.signal });
+    return { request, cancel: () => controller.abort() };
+  };
 
 
 export const getSuggestion = (id?: string) => {

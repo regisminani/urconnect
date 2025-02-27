@@ -3,8 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 
+interface FormData {
+  [key: string]: string; // Allows dynamic keys
+}
+
 const RegisterPage = () => {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     firstName: "",
     otherName: "",
     email: "",
@@ -20,11 +24,11 @@ const RegisterPage = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     setLoading(true);
 
@@ -34,7 +38,7 @@ const RegisterPage = () => {
         toast.success("Account created successfully!");
         setTimeout(() => navigate("/loginadmin"), 1000);
       }
-    } catch (error) {
+    } catch (error:any) {
       toast.error(error.response?.data?.message || "Something went wrong. Try again.");
     } finally {
       setLoading(false);

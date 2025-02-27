@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react"; // Icons for better UI
-import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
