@@ -9,7 +9,7 @@ import { ToastContainer } from "react-toastify"
 } 
 const Layout = ({children}:Props) => {
     return (
-        <div className="relative">
+        <div className="relative mb-20">
         <Header/>
           <div className=" m-3 font-inter flex md:gap-20 ">
       <Sidebar/>

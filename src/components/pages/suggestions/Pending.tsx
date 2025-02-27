@@ -1,5 +1,6 @@
 import useSuggestions from "../../../hooks/useSuggestions";
 import Suggestion from "../../Suggestion";
+import SuggestionAlt from "../../SuggestionAlt";
 
 const Pending = () => {
   let { loading, error, suggestions } = useSuggestions("pending");
@@ -26,6 +27,7 @@ const Pending = () => {
           createdAt={s.createdAt}
         />
       ))}
+      <SuggestionAlt/>
     </div>
   );
 };

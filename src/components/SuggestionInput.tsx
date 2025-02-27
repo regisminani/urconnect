@@ -81,7 +81,7 @@ const SuggestionInput = ({ username }: { username: String }) => {
       {message && <p className="text-red-500 text-xs">{message}</p>}
       <div className="mt-4 sm:flex sm:justify-between w-full">
         <div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
             <p className="text-[#737272] font-semibold text-sm">
               Tag authority*
             </p>

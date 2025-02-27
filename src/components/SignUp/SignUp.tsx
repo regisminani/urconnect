@@ -67,12 +67,12 @@ const SignUp = () => {
   return (
     <div className="mt-16 ml-80 w-[700px] flex flex-col md:flex-row rounded-xl shadow-2xl shadow-cyan-950 mb-13 font-inter">
       <div className="w-full md:w-1/2 flex flex-col items-center justify-center border-0  rounded-t-xl md:rounded-l-xl md:rounded-tr-none p-4">
-        <div className="text-[#006991] text-5xl mb-10 font-inter">
+        <div className="text-[#006991] text-5xl font-semibold mb-10 font-inter">
           UR Connect
         </div>
         <div className="w-72 h-72">
           <img
-            src="/public/ur.jpg"
+            src="/ur.jpg"
             alt="Ur-logo"
             className="w-full h-full object-contain"
           />
