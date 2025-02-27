@@ -4,6 +4,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { loginUser } from "../../api";
 import { useNavigate } from "react-router-dom";
 import { StudentLogin } from "../../types";
+import { jwtDecode, JwtPayload } from "jwt-decode";
+
+interface Token extends JwtPayload {
+  role?: string;
+}
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -53,16 +58,20 @@ const LoginPage = () => {
   console.log(formData);
   // Handle Form Submission
   const handleSubmit = async (e: { preventDefault: () => void }) => {
-    setLoading(true)
+    setLoading(true);
     e.preventDefault();
 
     if (validateFields()) {
       try {
         const { data } = await loginUser(formData);
+        console.log("RESPONSE", data);
         localStorage.setItem("token", data.token);
+        const decodedToken: Token = jwtDecode(data.token);
+        setLoading(false);
+        if (decodedToken?.role === "Student") {
+          navigate("/suggestions");
+        } else navigate("/mainadmin");
         toast.success("Logged in Successfully!");
-        setLoading(false)
-        navigate("/suggestions");
       } catch (error: any) {
         toast.error(
           "Error: " + error.response?.data?.error || "Something went wrong"
@@ -76,7 +85,7 @@ const LoginPage = () => {
 
   return (
     <div
-      className="ml-[460px] w-[400px] h-auto bg-white shadow-2xl shadow-[#006991] mt-30 mb-30 flex flex-col items-center font-sans"
+      className="sm:ml-[460px]  sm:w-[400px] h-auto bg-white shadow-2xl shadow-[#006991] mt-40 mb-30 flex flex-col items-center font-sans"
       style={{ borderRadius: "15px" }}
     >
       <div

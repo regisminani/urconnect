@@ -12,9 +12,9 @@ const Header = () => {
   const { user } = fetchUser();
   console.log("The USER", user);
   const handleLogout = () => {
-    toast.success("Logged out Successfully!");
     localStorage.removeItem("token");
     navigate("/login");
+    toast.success("Logged out Successfully!");
   };
   return (
     <div className="flex z-10 sticky top-0 bg-white md:p-1 items-center justify-between ">
