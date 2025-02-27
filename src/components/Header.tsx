@@ -17,7 +17,7 @@ const Header = () => {
     toast.success("Logged out Successfully!");
   };
   return (
-    <div className="flex z-10 sticky top-0 bg-white md:p-1 items-center justify-between ">
+    <div className="flex z-20 sticky top-0 bg-white md:p-1 items-center justify-between ">
       <div>
         <Logo />
       </div>
@@ -33,7 +33,7 @@ const Header = () => {
               <UserIcon username={user.email} />
             </div>
             {show && (
-              <div onClick={() => setShow(false)} className="fixed inset-0">
+              <div onClick={() => setShow(false)} className="fixed inset-0 ">
                 <div className="absolute top-8 right-1 mt-1 p-5  rounded-xl bg-white shadow-md shadow-black/25 border border-neutral-100">
                   <div className="flex gap-1">
                     <UserIcon username={user.firstName} />
