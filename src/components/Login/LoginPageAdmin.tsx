@@ -85,7 +85,7 @@ const LoginPage = () => {
     
 
       <div className="relative top-[-45px] h-25 w-25 bg-[#006991]" style={{ borderRadius: "50%" }}>
-        <img src="/public/th.jpg" alt="Logo" style={{ borderRadius: "50%" }} />
+        <img src="/th.jpg" alt="Logo" style={{ borderRadius: "50%" }} />
       </div>
 
       <div className="items-center text-3xl mt-0 mb-3" style={{ color: "#006991" }}>

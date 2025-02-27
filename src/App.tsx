@@ -24,6 +24,7 @@ import AnsweredSuggestion from "./components/Admin/AnsweredSuggestion";
 import LayoutThree from "./components/MainAdmin.tsx/LayoutThree";
 import HomeMainAdmin from "./components/MainAdmin.tsx/HomeMainAdmin";
 import MySuggestions from "./components/MySuggestions";
+import LoginPage from "./components/Login/LoginPage";
 
 function App() {
   return (
@@ -37,7 +38,7 @@ function App() {
             <Route path="suggestion" element={<Suggestion />} />
 
             
-            <Route path="login" element={<LoginPageAdmin />} />
+            <Route path="login" element={<LoginPage/>} />
 
         
             <Route path="signup" element={<SignUp />} />
